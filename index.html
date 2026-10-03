@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>نوارة | للاستيراد والتصدير والتجارة الغذائية</title>
+<link rel="icon" href="img primary/logo.jpg" type="image/jpeg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+<style>
+/* ============================================================
+   ROOT VARIABLES
+============================================================ */
+:root{
+  --g1:#0f2d1c;
+  --g2:#1a3d2b;
+  --g3:#2e6b44;
+  --g4:#4a9465;
+  --g5:#7fba95;
+  --p1:#c4714f;
+  --p2:#d98c6a;
+  --p3:#f0b899;
+  --gold:#c9a840;
+  --gold2:#f0d080;
+  --cream:#f7f3ec;
+  --white:#ffffff;
+  --dark:#0a1a10;
+  --text:#1e1e1e;
+  --text2:#555;
+  --glass:rgba(255,255,255,0.07);
+  --glass-border:rgba(255,255,255,0.15);
+  --shadow-green:0 20px 60px rgba(46,107,68,0.25);
+  --shadow-card:0 8px 40px rgba(0,0,0,0.08);
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+  --ease-back:cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;outline:none}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0f2d1c}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--p2),var(--g3));border-radius:6px}
+
+/* ============================================================
+   PRELOADER
+============================================================ */
+#preloader{
+  position:fixed;inset:0;
+  background:var(--g1);
+  z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  transition:opacity .8s var(--ease),visibility .8s;
+}
+#preloader.out{opacity:0;visibility:hidden}
+.pre-logo{height:90px;border-radius:50%;box-shadow:0 0 40px rgba(217,140,106,.4);animation:pre-pulse 1.6s ease-in-out infinite}
+@keyframes pre-pulse{0%,100%{box-shadow:0 0 40px rgba(217,140,106,.4)}50%{box-shadow:0 0 80px rgba(217,140,106,.7)}}
+.pre-text{color:rgba(255,255,255,.6);font-size:.85rem;letter-spacing:3px;text-transform:uppercase}
+.pre-track{width:220px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.pre-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--g4),var(--p2));animation:pre-fill 2s ease forwards}
+@keyframes pre-fill{from{width:0}to{width:100%}}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 40px;
+  transition:all .4s var(--ease);
+}
+#nav.solid{
+  background:rgba(10,26,16,.96);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  box-shadow:0 4px 40px rgba(0,0,0,.3);
+}
+.nav-wrap{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:82px}
+.nav-logo img{height:58px;border-radius:10px;transition:all .3s var(--ease)}
+.nav-logo img:hover{transform:scale(1.05)}
+
+.nav-menu{display:flex;align-items:center;gap:8px;list-style:none}
+.nav-menu a{
+  position:relative;
+  color:rgba(255,255,255,.8);
+  font-size:.92rem;font-weight:600;
+  padding:8px 16px;border-radius:8px;
+  transition:all .3s var(--ease);
+  white-space:nowrap;
+}
+.nav-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-menu a::after{
+  content:'';position:absolute;bottom:4px;right:50%;left:50%;
+  height:2px;background:var(--p2);border-radius:2px;
+  transition:all .3s var(--ease);
+}
+.nav-menu a:hover::after{right:16px;left:16px}
+.nav-cta-btn{
+  padding:10px 26px !important;
+  background:linear-gradient(135deg,var(--p1),var(--p2)) !important;
+  color:#fff !important;border-radius:50px !important;
+  box-shadow:0 4px 20px rgba(196,113,79,.4) !important;
+  font-weight:700 !important;
+}
+.nav-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,113,79,.5) !important}
+.nav-cta-btn::after{display:none !important}
+
+/* hamburger */
+.burger{display:none;flex-direction:column;gap:6px;padding:8px;border-radius:8px;background:rgba(255,255,255,.08)}
+.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s var(--ease);display:block}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile drawer */
+.mob-menu{
+  display:none;
+  position:fixed;top:82px;right:-100%;width:80%;max-width:320px;
+  height:calc(100vh - 82px);
+  background:rgba(10,26,16,.97);
+  backdrop-filter:blur(24px);
+  padding:32px 24px;
+  flex-direction:column;gap:8px;list-style:none;
+  transition:right .4s var(--ease);
+  border-left:1px solid rgba(255,255,255,.08);
+  z-index:999;
+}
+.mob-menu.open{right:0}
+.mob-menu li a{
+  display:block;padding:14px 18px;border-radius:12px;
+  color:rgba(255,255,255,.85);font-size:1.05rem;font-weight:600;
+  transition:all .3s var(--ease);
+}
+.mob-menu li a:hover{background:rgba(255,255,255,.1);color:#fff;padding-right:24px}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;overflow:hidden;
+}
+
+/* Canvas particles */
+#hero-canvas{position:absolute;inset:0;z-index:0}
+
+/* Slides */
+.hero-slides{position:absolute;inset:0;z-index:1}
+.h-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity 1.5s ease;
+}
+.h-slide.on{opacity:1}
+.h-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 9s ease}
+.h-slide.on img{transform:scale(1)}
+
+/* Multi-layer overlay */
+.hero-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(135deg, rgba(10,26,16,.90) 0%, rgba(10,26,16,.65) 50%, rgba(10,26,16,.35) 100%),
+    linear-gradient(to top, rgba(10,26,16,.8) 0%, transparent 40%);
+}
+
+/* Hero content */
+.hero-inner{
+  position:relative;z-index:3;
+  max-width:1300px;margin:0 auto;padding:0 40px;
+  padding-top:82px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  min-height:100vh;
+}
+.hero-left{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 22px;
+  background:rgba(217,140,106,.15);
+  border:1px solid rgba(217,140,106,.35);
+  border-radius:50px;
+  color:var(--p3);font-size:.8rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:28px;
+  backdrop-filter:blur(8px);
+}
+.hero-eyebrow span{width:6px;height:6px;background:var(--p2);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-h1{
+  font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:900;
+  color:#fff;line-height:1.15;margin-bottom:6px;
+  text-shadow:0 2px 30px rgba(0,0,0,.3);
+}
+.hero-h1 .accent{
+  background:linear-gradient(135deg,var(--p3),var(--p1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub-title{
+  font-size:1.1rem;font-weight:500;
+  color:rgba(255,255,255,.5);
+  letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.hero-desc{
+  font-size:1.05rem;color:rgba(255,255,255,.78);
+  line-height:2;margin-bottom:44px;max-width:520px;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+
+/* Primary button */
+.btn-prime{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:16px 38px;
+  background:linear-gradient(135deg,var(--g3),var(--g2));
+  color:#fff;border-radius:50px;font-size:1rem;font-weight:700;
+  box-shadow:0 8px 32px rgba(46,107,68,.45);
+  transition:all .35s var(--ease-back);
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-prime:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(46,107,68,.55)}
+.btn-prime .ic{
+  width:36px;height:36px;background:rgba(255,255,255,.15);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:all .35s var(--ease);
+}
+.btn-prime:hover .ic{background:rgba(255,255,255,.25);transform:rotate(-15deg)}
+
+/* Ghost button */
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:16px 38px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;border-radius:50px;font-size:1rem;font-weight:600;
+  backdrop-filter:blur(8px);
+  transition:all .35s var(--ease);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.5);transform:translateY(-3px)}
+.play-ring{
+  width:44px;height:44px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--p2),var(--p1));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 8px rgba(217,140,106,.2);
+  padding-right:2px;
+  transition:all .35s var(--ease);
+}
+.btn-ghost:hover .play-ring{box-shadow:0 0 0 14px rgba(217,140,106,.15)}
+
+/* Hero right — floating card */
+.hero-right{display:flex;flex-direction:column;gap:20px}
+.hero-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:28px 28px;
+  backdrop-filter:blur(16px);
+  transition:all .35s var(--ease);
+}
+.hero-card:hover{background:rgba(255,255,255,.1);transform:translateX(-6px)}
+.hc-row{display:flex;align-items:center;gap:20px}
+.hc-icon{
+  width:56px;height:56px;border-radius:16px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:#fff;
+  background:linear-gradient(135deg,var(--g3),var(--g2));
+  box-shadow:0 6px 20px rgba(46,107,68,.4);
+}
+.hc-icon.p{background:linear-gradient(135deg,var(--p2),var(--p1));box-shadow:0 6px 20px rgba(196,113,79,.4)}
+.hc-icon.gold{background:linear-gradient(135deg,var(--gold),#a87c20);box-shadow:0 6px 20px rgba(201,168,64,.4)}
+.hc-txt h5{color:#fff;font-size:.95rem;font-weight:700;margin-bottom:2px}
+.hc-txt p{color:rgba(255,255,255,.6);font-size:.83rem}
+
+/* Dots */
+.hero-dots{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;gap:10px;z-index:4;
+}
+.h-dot{
+  width:8px;height:8px;border-radius:4px;
+  background:rgba(255,255,255,.3);border:none;
+  transition:all .4s var(--ease);
+}
+.h-dot.on{width:32px;background:var(--p2)}
+
+/* ============================================================
+   TICKER / MARQUEE
+============================================================ */
+.ticker{
+  background:linear-gradient(135deg,var(--g2),var(--g1));
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 0;overflow:hidden;
+}
+.ticker-track{
+  display:flex;gap:0;
+  animation:ticker-roll 30s linear infinite;
+  width:max-content;
+}
+@keyframes ticker-roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  display:flex;align-items:center;gap:12px;
+  padding:0 40px;color:rgba(255,255,255,.7);
+  font-size:.88rem;font-weight:600;white-space:nowrap;
+}
+.ticker-item i{color:var(--p2);font-size:.85rem}
+.ticker-sep{color:var(--g4);opacity:.5}
+
+/* ============================================================
+   SECTION COMMONS
+============================================================ */
+.sec{padding:110px 0}
+.container{max-width:1300px;margin:0 auto;padding:0 40px}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--p2);margin-bottom:14px;
+}
+.sec-tag::before{content:'';width:28px;height:2px;background:var(--p2);border-radius:2px}
+.sec-title{
+  font-size:clamp(2rem,4vw,3rem);font-weight:900;
+  color:var(--g1);line-height:1.15;margin-bottom:18px;
+}
+.sec-title .hi{
+  background:linear-gradient(135deg,var(--g2),var(--g4));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-body{font-size:1.05rem;color:var(--text2);line-height:2;max-width:640px}
+.sec-center{text-align:center}
+.sec-center .sec-body{margin:0 auto}
+
+/* ============================================================
+   STATS BAR
+============================================================ */
+.stats-bar{
+  background:var(--g1);padding:0;
+  position:relative;z-index:5;
+}
+.stats-inner{
+  max-width:1300px;margin:0 auto;padding:0 40px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:50px 20px;text-align:center;
+  border-left:1px solid rgba(255,255,255,.07);
+  transition:background .3s var(--ease);
+}
+.stat-item:last-child{border-left:none}
+.stat-item:hover{background:rgba(255,255,255,.03)}
+.stat-num{
+  font-size:3.2rem;font-weight:900;
+  background:linear-gradient(135deg,var(--p3),var(--p1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;line-height:1;margin-bottom:8px;
+}
+.stat-lbl{font-size:.88rem;color:rgba(255,255,255,.55);font-weight:500;letter-spacing:1px}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+#about{background:var(--white);padding:120px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+
+/* Image collage */
+.about-imgs{position:relative;height:560px}
+.a-img-1{
+  position:absolute;top:0;right:0;
+  width:72%;height:380px;object-fit:cover;
+  border-radius:28px;
+  box-shadow:0 24px 80px rgba(26,61,43,.2);
+}
+.a-img-2{
+  position:absolute;bottom:0;left:0;
+  width:52%;height:250px;object-fit:cover;
+  border-radius:22px;
+  box-shadow:0 16px 60px rgba(26,61,43,.2);
+  border:5px solid var(--white);
+}
+.a-badge{
+  position:absolute;top:50%;right:-24px;transform:translateY(-50%);
+  background:linear-gradient(135deg,var(--g3),var(--g1));
+  padding:20px 26px;border-radius:20px;text-align:center;
+  box-shadow:0 12px 40px rgba(46,107,68,.5);
+  border:2px solid rgba(255,255,255,.1);
+}
+.a-badge strong{display:block;font-size:2rem;font-weight:900;color:#fff;line-height:1}
+.a-badge span{font-size:.72rem;color:rgba(255,255,255,.7);letter-spacing:1px}
+.a-deco{
+  position:absolute;bottom:30px;right:30px;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p2),var(--p1));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.4rem;
+  box-shadow:0 8px 24px rgba(217,140,106,.5);
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* About text */
+.about-list{margin-top:36px;display:flex;flex-direction:column;gap:18px}
+.a-feat{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:22px 24px;border-radius:18px;
+  background:var(--cream);
+  border:1px solid rgba(26,61,43,.07);
+  border-right:4px solid transparent;
+  background-clip:padding-box;
+  transition:all .35s var(--ease);
+  position:relative;overflow:hidden;
+}
+.a-feat::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:4px;
+  background:linear-gradient(var(--g3),var(--p2));
+  border-radius:0 18px 18px 0;
+}
+.a-feat:hover{transform:translateX(-8px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.a-feat-ic{
+  width:52px;height:52px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;color:#fff;
+  background:linear-gradient(135deg,var(--g3),var(--g2));
+  box-shadow:0 6px 18px rgba(46,107,68,.35);
+}
+.a-feat h4{font-size:.97rem;font-weight:700;color:var(--g1);margin-bottom:4px}
+.a-feat p{font-size:.87rem;color:var(--text2);line-height:1.75}
+
+/* ============================================================
+   SERVICES
+============================================================ */
+#services{
+  background:linear-gradient(180deg,var(--cream) 0%,#eef5f0 100%);
+  padding:120px 0;
+  position:relative;overflow:hidden;
+}
+#services::before{
+  content:'';position:absolute;
+  top:-200px;left:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,107,68,.06),transparent 70%);
+  pointer-events:none;
+}
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;margin-top:64px;
+}
+.srv-card{
+  background:var(--white);
+  border-radius:28px;padding:44px 34px;
+  border:1px solid rgba(26,61,43,.06);
+  box-shadow:0 4px 24px rgba(0,0,0,.05);
+  transition:all .4s var(--ease-back);
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.srv-card::before{
+  content:'';position:absolute;
+  inset:0;border-radius:28px;
+  background:linear-gradient(135deg,rgba(46,107,68,.04),rgba(217,140,106,.04));
+  opacity:0;transition:opacity .4s;
+}
+.srv-card:hover::before{opacity:1}
+.srv-card:hover{transform:translateY(-14px);box-shadow:0 28px 70px rgba(26,61,43,.15)}
+.srv-num{
+  position:absolute;top:20px;left:24px;
+  font-size:4rem;font-weight:900;
+  color:rgba(26,61,43,.04);line-height:1;
+  transition:color .4s;
+}
+.srv-card:hover .srv-num{color:rgba(46,107,68,.08)}
+.srv-icon{
+  width:72px;height:72px;border-radius:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;color:#fff;
+  background:linear-gradient(135deg,var(--g3),var(--g1));
+  box-shadow:0 10px 30px rgba(46,107,68,.35);
+  margin-bottom:26px;
+  transition:all .4s var(--ease-back);
+}
+.srv-card:hover .srv-icon{transform:scale(1.1) rotate(-8deg);box-shadow:0 16px 40px rgba(46,107,68,.45)}
+.srv-card h3{font-size:1.15rem;font-weight:800;color:var(--g1);margin-bottom:12px}
+.srv-card p{font-size:.9rem;color:var(--text2);line-height:1.85}
+.srv-arrow{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:20px;color:var(--g3);font-size:.85rem;font-weight:700;
+  opacity:0;transform:translateX(10px);
+  transition:all .35s var(--ease);
+}
+.srv-card:hover .srv-arrow{opacity:1;transform:translateX(0)}
+
+/* ============================================================
+   PROCESS / TIMELINE
+============================================================ */
+#process{
+  background:var(--g1);
+  padding:120px 0;
+  position:relative;overflow:hidden;
+}
+#process::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.process-wrap{position:relative;z-index:1}
+.process-header{text-align:center;margin-bottom:80px}
+.process-header .sec-title{color:#fff}
+.process-header .sec-body{color:rgba(255,255,255,.6);margin:0 auto}
+.timeline{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;position:relative;
+}
+.timeline::before{
+  content:'';position:absolute;
+  top:50px;right:12.5%;left:12.5%;
+  height:2px;
+  background:linear-gradient(90deg,var(--g4),var(--p2),var(--g4));
+  opacity:.3;
+}
+.tl-item{text-align:center;padding:0 20px;position:relative}
+.tl-dot{
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(255,255,255,.05);
+  border:2px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 30px;
+  font-size:2rem;color:rgba(255,255,255,.4);
+  transition:all .4s var(--ease-back);
+  position:relative;z-index:1;
+}
+.tl-item:hover .tl-dot{
+  background:linear-gradient(135deg,var(--g3),var(--p2));
+  border-color:transparent;color:#fff;
+  transform:scale(1.12);
+  box-shadow:0 0 0 16px rgba(46,107,68,.1),0 12px 40px rgba(46,107,68,.4);
+}
+.tl-item h4{color:#fff;font-size:1rem;font-weight:700;margin-bottom:10px}
+.tl-item p{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.8}
+
+/* ============================================================
+   GALLERY
+============================================================ */
+#gallery{background:var(--cream);padding:120px 0}
+.gal-header{margin-bottom:60px}
+
+/* Filter tabs */
+.gal-filters{
+  display:flex;gap:12px;flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.gal-btn{
+  padding:10px 24px;border-radius:50px;
+  background:transparent;border:2px solid rgba(26,61,43,.15);
+  color:var(--text2);font-family:'Cairo',sans-serif;
+  font-size:.88rem;font-weight:600;
+  transition:all .3s var(--ease);
+}
+.gal-btn.active,.gal-btn:hover{
+  background:var(--g2);border-color:var(--g2);color:#fff;
+  box-shadow:0 4px 16px rgba(46,107,68,.35);
+}
+
+/* Masonry grid */
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:220px;
+  gap:16px;
+}
+.g-item{
+  position:relative;overflow:hidden;border-radius:20px;
+  cursor:pointer;
+}
+.g-item.wide{grid-column:span 2}
+.g-item.tall{grid-row:span 2}
+.g-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s var(--ease);
+}
+.g-item:hover img{transform:scale(1.1)}
+.g-cap{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,26,16,.85) 0%,transparent 60%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:20px;
+  opacity:0;transition:opacity .4s;
+}
+.g-item:hover .g-cap{opacity:1}
+.g-cap-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;margin-bottom:auto;
+  align-self:flex-end;
+}
+
+/* Lightbox */
+#lb{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.95);z-index:9000;
+  align-items:center;justify-content:center;
+}
+#lb.on{display:flex}
+#lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:12px;box-shadow:0 0 80px rgba(0,0,0,.8)}
+.lb-x{
+  position:absolute;top:24px;left:24px;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.lb-x:hover{background:var(--p1);border-color:var(--p1)}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.lb-nav:hover{background:var(--g3)}
+#lb-prev{right:20px}
+#lb-next{left:20px}
+
+/* ============================================================
+   VIDEO SECTION
+============================================================ */
+#vsec{
+  background:linear-gradient(135deg,var(--g2) 0%,var(--g1) 100%);
+  padding:120px 0;text-align:center;position:relative;overflow:hidden;
+}
+#vsec::before{
+  content:'';position:absolute;
+  top:-100px;left:50%;transform:translateX(-50%);
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(78,148,101,.15),transparent 70%);
+  pointer-events:none;
+}
+#vsec .sec-title{color:#fff}
+#vsec .sec-body{color:rgba(255,255,255,.6)}
+.vid-frame{
+  position:relative;max-width:960px;margin:60px auto 0;
+  border-radius:28px;overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.08);
+}
+.vid-thumb{
+  width:100%;aspect-ratio:16/9;
+  object-fit:cover;display:block;
+}
+.vid-shade{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(10,26,16,.3) 0%,rgba(10,26,16,.55) 100%);
+}
+.vid-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:96px;height:96px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p2),var(--p1));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:2.2rem;padding-right:4px;
+  box-shadow:0 0 0 0 rgba(217,140,106,.4);
+  animation:pulse-ring 2s ease-out infinite;
+  transition:all .35s var(--ease-back);
+}
+@keyframes pulse-ring{
+  0%{box-shadow:0 0 0 0 rgba(217,140,106,.4)}
+  70%{box-shadow:0 0 0 28px rgba(217,140,106,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,140,106,0)}
+}
+.vid-play:hover{transform:translate(-50%,-50%) scale(1.1);animation-play-state:paused}
+.vid-label{
+  position:absolute;bottom:28px;right:28px;
+  padding:8px 20px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:50px;
+  color:rgba(255,255,255,.85);font-size:.82rem;font-weight:600;
+  backdrop-filter:blur(8px);
+}
+
+/* Video Modal */
+#vmodal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.96);z-index:9999;
+  align-items:center;justify-content:center;
+}
+#vmodal.on{display:flex}
+#vmodal video{max-width:92vw;max-height:85vh;border-radius:14px;outline:none}
+.vm-x{
+  position:absolute;top:24px;left:24px;
+  width:50px;height:50px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.vm-x:hover{background:var(--p1);border-color:var(--p1)}
+
+/* ============================================================
+   WHY US
+============================================================ */
+#why{
+  background:var(--white);padding:120px 0;
+  position:relative;overflow:hidden;
+}
+#why::after{
+  content:'';position:absolute;
+  bottom:-100px;left:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,107,68,.05),transparent 70%);
+  pointer-events:none;
+}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.why-checks{display:flex;flex-direction:column;gap:16px;margin-top:36px}
+.why-row{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;border-radius:14px;
+  background:var(--cream);
+  border:1px solid rgba(26,61,43,.06);
+  transition:all .35s var(--ease);
+}
+.why-row:hover{background:#fff;transform:translateX(-10px);box-shadow:0 8px 32px rgba(0,0,0,.07)}
+.why-chk{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--g3),var(--g2));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.85rem;
+  box-shadow:0 4px 12px rgba(46,107,68,.35);
+}
+.why-row span{color:var(--text);font-weight:600;font-size:.95rem}
+
+/* Why cards */
+.why-cards-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.w-card{
+  background:var(--cream);border-radius:24px;
+  padding:36px 28px;
+  border:1px solid rgba(26,61,43,.07);
+  transition:all .4s var(--ease-back);
+  position:relative;overflow:hidden;
+}
+.w-card::before{
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,107,68,.08),transparent 70%);
+  transition:transform .4s var(--ease);
+}
+.w-card:hover::before{transform:scale(2)}
+.w-card:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(26,61,43,.12);background:#fff}
+.w-ic{
+  width:64px;height:64px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;color:#fff;margin-bottom:20px;
+  background:linear-gradient(135deg,var(--p2),var(--p1));
+  box-shadow:0 8px 24px rgba(196,113,79,.4);
+  transition:all .4s var(--ease-back);
+}
+.w-card:hover .w-ic{transform:scale(1.1) rotate(-8deg);background:linear-gradient(135deg,var(--g3),var(--g2));box-shadow:0 10px 28px rgba(46,107,68,.4)}
+.w-card h4{font-size:1.05rem;font-weight:800;color:var(--g1);margin-bottom:10px}
+.w-card p{font-size:.87rem;color:var(--text2);line-height:1.85}
+
+/* ============================================================
+   CERTIFICATIONS
+============================================================ */
+#certs{
+  background:linear-gradient(135deg,var(--g1) 0%,var(--g2) 100%);
+  padding:90px 0;
+}
+.certs-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+.cert-item{
+  display:flex;align-items:center;gap:16px;
+  padding:22px 28px;border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(8px);
+  transition:all .35s var(--ease);flex:1;min-width:160px;
+}
+.cert-item:hover{background:rgba(255,255,255,.13);transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.2)}
+.cert-ic{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;color:#fff;flex-shrink:0;
+  background:linear-gradient(135deg,var(--p2),var(--p1));
+  box-shadow:0 6px 16px rgba(196,113,79,.4);
+}
+.cert-txt strong{display:block;color:#fff;font-size:.95rem;font-weight:700}
+.cert-txt span{color:rgba(255,255,255,.5);font-size:.78rem}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+#contact{background:var(--cream);padding:120px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+.contact-left{}
+.c-info-cards{margin-top:40px;display:flex;flex-direction:column;gap:16px}
+.c-info{
+  display:flex;align-items:center;gap:18px;
+  padding:20px 22px;border-radius:18px;
+  background:var(--white);
+  box-shadow:0 4px 20px rgba(0,0,0,.05);
+  border:1px solid rgba(26,61,43,.06);
+  transition:all .35s var(--ease);
+}
+.c-info:hover{transform:translateX(-8px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.c-ic{
+  width:50px;height:50px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:#fff;
+  background:linear-gradient(135deg,var(--g3),var(--g2));
+  box-shadow:0 6px 16px rgba(46,107,68,.35);
+}
+.c-ic.p{background:linear-gradient(135deg,var(--p2),var(--p1));box-shadow:0 6px 16px rgba(196,113,79,.35)}
+.c-info h5{font-size:.78rem;font-weight:500;color:var(--text2);margin-bottom:3px;letter-spacing:.5px}
+.c-info p{font-size:.97rem;font-weight:700;color:var(--g1)}
+
+/* Form */
+.contact-form{
+  background:var(--white);border-radius:28px;
+  padding:52px 46px;
+  box-shadow:0 16px 60px rgba(0,0,0,.08);
+  border:1px solid rgba(26,61,43,.06);
+}
+.contact-form h3{font-size:1.6rem;font-weight:900;color:var(--g1);margin-bottom:36px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f-grp{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.f-grp label{font-size:.83rem;font-weight:700;color:var(--g2);letter-spacing:.5px}
+.f-grp input,.f-grp textarea,.f-grp select{
+  padding:14px 18px;
+  border:2px solid rgba(26,61,43,.1);
+  border-radius:14px;
+  font-family:'Cairo',sans-serif;font-size:.95rem;
+  color:var(--text);background:var(--cream);
+  outline:none;transition:all .3s var(--ease);
+}
+.f-grp input:focus,.f-grp textarea:focus,.f-grp select:focus{
+  border-color:var(--g3);background:#fff;
+  box-shadow:0 0 0 4px rgba(46,107,68,.1);
+}
+.f-grp textarea{resize:vertical;min-height:130px}
+.f-submit{
+  width:100%;padding:17px;
+  background:linear-gradient(135deg,var(--g3),var(--g1));
+  color:#fff;border-radius:16px;
+  font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 8px 30px rgba(46,107,68,.4);
+  transition:all .35s var(--ease-back);
+}
+.f-submit:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(46,107,68,.5)}
+.f-submit.success{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 8px 30px rgba(37,211,102,.4)}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{background:var(--dark);padding:80px 0 0}
+.ft-grid{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;
+  gap:60px;padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.ft-brand img{height:72px;border-radius:12px;margin-bottom:22px}
+.ft-brand p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.9;max-width:290px}
+.ft-social{display:flex;gap:10px;margin-top:28px}
+.ft-social a{
+  width:42px;height:42px;border-radius:12px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.6);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .35s var(--ease-back);
+}
+.ft-social a:hover{background:var(--p2);border-color:var(--p2);color:#fff;transform:translateY(-5px)}
+.ft-col h4{
+  color:#fff;font-size:.97rem;font-weight:700;
+  margin-bottom:22px;padding-bottom:12px;
+  border-bottom:2px solid rgba(255,255,255,.06);
+  position:relative;
+}
+.ft-col h4::after{content:'';position:absolute;bottom:-2px;right:0;width:32px;height:2px;background:var(--p2)}
+.ft-links{display:flex;flex-direction:column;gap:10px}
+.ft-links a{
+  font-size:.88rem;color:rgba(255,255,255,.5);
+  display:flex;align-items:center;gap:8px;
+  transition:all .3s var(--ease);padding:4px 0;
+}
+.ft-links a i{font-size:.7rem;color:var(--g4);transition:transform .3s}
+.ft-links a:hover{color:rgba(255,255,255,.9);padding-right:8px}
+.ft-links a:hover i{transform:translateX(-4px);color:var(--p2)}
+.ft-bottom{
+  text-align:center;padding:24px 0;
+  color:rgba(255,255,255,.3);font-size:.82rem;
+}
+.ft-bottom span{color:var(--p3)}
+
+/* ============================================================
+   FLOATING ELEMENTS
+============================================================ */
+#to-top{
+  position:fixed;bottom:36px;left:36px;z-index:500;
+  width:50px;height:50px;border-radius:16px;
+  background:linear-gradient(135deg,var(--g3),var(--g1));
+  color:#fff;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(20px);
+  transition:all .35s var(--ease-back);
+  box-shadow:0 8px 24px rgba(46,107,68,.45);
+}
+#to-top.show{opacity:1;transform:translateY(0)}
+#to-top:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(46,107,68,.55)}
+
+.wa-btn{
+  position:fixed;bottom:100px;left:36px;z-index:500;
+}
+.wa-btn a{
+  width:54px;height:54px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;
+  box-shadow:0 6px 24px rgba(37,211,102,.45);
+  transition:all .35s var(--ease-back);
+}
+.wa-btn a:hover{transform:scale(1.12) rotate(-10deg);box-shadow:0 12px 36px rgba(37,211,102,.55)}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
+  .about-imgs{height:340px}
+  .a-badge{right:-12px}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr);gap:40px}
+  .timeline::before{display:none}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .why-grid{gap:50px}
+}
+@media(max-width:768px){
+  .nav-menu{display:none}
+  .mob-menu{display:flex}
+  .burger{display:flex}
+  .sec{padding:80px 0}
+  .container{padding:0 20px}
+  .srv-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .g-item.wide,.g-item.tall{grid-column:span 1;grid-row:span 1}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-left:none;border-bottom:1px solid rgba(255,255,255,.07)}
+  .why-cards-wrap{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .certs-inner{flex-direction:column}
+  .timeline{grid-template-columns:1fr;gap:30px}
+  .f-row{grid-template-columns:1fr}
+  .contact-form{padding:32px 24px}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:2.2rem}
+  .nav-wrap{height:70px}
+  .mob-menu{top:70px;height:calc(100vh - 70px)}
+  .gal-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================== PRELOADER ======================== -->
+<div id="preloader">
+  <img src="img primary/logo.jpg" alt="نوارة" class="pre-logo"/>
+  <p class="pre-text">N A W A R A</p>
+  <div class="pre-track"><div class="pre-bar"></div></div>
+</div>
+
+<!-- ======================== NAVBAR ======================== -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a href="#hero" class="nav-logo"><img src="img primary/logo.jpg" alt="نوارة"/></a>
+    <ul class="nav-menu">
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#services">خدماتنا</a></li>
+      <li><a href="#process">كيف نعمل</a></li>
+      <li><a href="#gallery">معرضنا</a></li>
+      <li><a href="#vsec">الفيديو</a></li>
+      <li><a href="#why">لماذا نوارة</a></li>
+      <li><a href="#contact" class="nav-cta-btn">تواصل معنا</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<ul class="mob-menu" id="mobMenu">
+  <li><a href="#about">من نحن</a></li>
+  <li><a href="#services">خدماتنا</a></li>
+  <li><a href="#process">كيف نعمل</a></li>
+  <li><a href="#gallery">معرضنا</a></li>
+  <li><a href="#vsec">الفيديو</a></li>
+  <li><a href="#why">لماذا نوارة</a></li>
+  <li><a href="#contact">تواصل معنا</a></li>
+</ul>
+
+<!-- ======================== HERO ======================== -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-slides" id="heroSlides">
+    <div class="h-slide on"><img src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt=""/></div>
+    <div class="h-slide"><img src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt=""/></div>
+    <div class="h-slide"><img src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt=""/></div>
+    <div class="h-slide"><img src="img primary/774476404_122278112942169124_2044847658479338186_n.jpg" alt=""/></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
+      <div class="hero-eyebrow">
+        <span></span>
+        رائدة في استيراد وتصدير السلع الغذائية
+      </div>
+      <p class="hero-sub-title">Nawara Business Company</p>
+      <h1 class="hero-h1">
+        جسر الخير<br/>
+        <span class="accent">لكل دول العالم</span>
+      </h1>
+      <p class="hero-desc">
+        جودة منتقاة وخبرة ممتدة والتزام بالمعايير العالمية في الخضر والفواكه والسلع الغذائية — نوارة شريكك التجاري الأول.
+      </p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-prime">
+          <span>اكتشف نوارة</span>
+          <span class="ic"><i class="fas fa-arrow-left"></i></span>
+        </a>
+        <button class="btn-ghost" onclick="openVid()">
+          <span class="play-ring"><i class="fas fa-play"></i></span>
+          <span>شاهد الفيديو</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+      <div class="hero-card" data-aos="fade-left" data-aos-delay="300">
+        <div class="hc-row">
+          <div class="hc-icon"><i class="fas fa-medal"></i></div>
+          <div class="hc-txt">
+            <h5>جودة معتمدة دولياً</h5>
+            <p>شهادات ISO وأعلى معايير سلامة الغذاء</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card" data-aos="fade-left" data-aos-delay="400">
+        <div class="hc-row">
+          <div class="hc-icon p"><i class="fas fa-globe-americas"></i></div>
+          <div class="hc-txt">
+            <h5>انتشار في 50+ دولة</h5>
+            <p>شبكة تصدير تغطي أسواق أوروبا وآسيا وأفريقيا</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card" data-aos="fade-left" data-aos-delay="500">
+        <div class="hc-row">
+          <div class="hc-icon gold"><i class="fas fa-shipping-fast"></i></div>
+          <div class="hc-txt">
+            <h5>تسليم سريع ومضمون</h5>
+            <p>لوجستيات متطورة تضمن الوصول في الوقت المحدد</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="heroDots">
+    <button class="h-dot on" onclick="goSlide(0)"></button>
+    <button class="h-dot" onclick="goSlide(1)"></button>
+    <button class="h-dot" onclick="goSlide(2)"></button>
+    <button class="h-dot" onclick="goSlide(3)"></button>
+  </div>
+</section>
+
+<!-- ======================== TICKER ======================== -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <!-- Filled by JS -->
+  </div>
+</div>
+
+<!-- ======================== STATS BAR ======================== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+      <span class="stat-num" data-target="15" data-suffix="+">0</span>
+      <span class="stat-lbl">سنوات خبرة</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+      <span class="stat-num" data-target="50" data-suffix="+">0</span>
+      <span class="stat-lbl">دولة مصدّر إليها</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+      <span class="stat-num" data-target="500" data-suffix="+">0</span>
+      <span class="stat-lbl">عميل موثوق</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+      <span class="stat-num" data-target="100" data-suffix="٪">0</span>
+      <span class="stat-lbl">التزام بالجودة</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== ABOUT ======================== -->
+<section id="about" class="sec" style="background:var(--white);padding:120px 0">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs" data-aos="fade-left" data-aos-duration="900">
+        <img class="a-img-1" src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt=""/>
+        <img class="a-img-2" src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt=""/>
+        <div class="a-badge">
+          <strong>+15</strong>
+          <span>عاماً من التميز</span>
+        </div>
+        <div class="a-deco"><i class="fas fa-leaf"></i></div>
+      </div>
+      <div data-aos="fade-right" data-aos-duration="900">
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> من نحن</div>
+        <h2 class="sec-title">رائدون في قطاع<br/><span class="hi">السلع الغذائية العالمية</span></h2>
+        <p class="sec-body">
+          شركة نوارة لتجارة السلع الغذائية والخضر والفواكه، تبرز بتميزها في الجودة والاستجابة السريعة
+          للاحتياجات والخبرة الوافية في المجال. منتجاتنا تلبي المعايير العالمية للجودة والصحة
+          وسلامة الغذاء مع تفانينا في تقديم أفضل الحلول لعملائنا حول العالم.
+        </p>
+        <div class="about-list">
+          <div class="a-feat" data-aos="fade-right" data-aos-delay="100">
+            <div class="a-feat-ic"><i class="fas fa-medal"></i></div>
+            <div>
+              <h4>جودة معتمدة دولياً</h4>
+              <p>منتجاتنا حاصلة على شهادات ISO وتلبي أعلى المعايير العالمية لسلامة الغذاء.</p>
+            </div>
+          </div>
+          <div class="a-feat" data-aos="fade-right" data-aos-delay="200">
+            <div class="a-feat-ic"><i class="fas fa-shipping-fast"></i></div>
+            <div>
+              <h4>استجابة سريعة وتسليم موثوق</h4>
+              <p>شبكة لوجستية متكاملة تضمن وصول منتجاتنا في الوقت المحدد وبأعلى جودة.</p>
+            </div>
+          </div>
+          <div class="a-feat" data-aos="fade-right" data-aos-delay="300">
+            <div class="a-feat-ic"><i class="fas fa-globe-americas"></i></div>
+            <div>
+              <h4>شبكة تصدير عالمية</h4>
+              <p>نصدّر إلى أكثر من 50 دولة حول العالم مع شركاء استراتيجيين موثوقين.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SERVICES ======================== -->
+<section id="services">
+  <div class="container">
+    <div class="sec-center">
+      <div class="sec-tag" style="justify-content:center;gap:8px"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> خدماتنا</div>
+      <h2 class="sec-title">ما نقدمه لعملائنا</h2>
+      <p class="sec-body">منظومة متكاملة من الخدمات في استيراد وتصدير السلع الغذائية والخضر والفواكه على مستوى عالمي.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="srv-num">01</span>
+        <div class="srv-icon"><i class="fas fa-seedling"></i></div>
+        <h3>الخضر والفواكه الطازجة</h3>
+        <p>توريد أفضل أنواع الخضراوات والفواكه الطازجة المنتقاة بعناية من أجود المزارع العالمية.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="srv-num">02</span>
+        <div class="srv-icon"><i class="fas fa-box-open"></i></div>
+        <h3>السلع الغذائية المعبأة</h3>
+        <p>مجموعة متنوعة من المواد الغذائية المعبأة والمعالجة وفق أعلى معايير الجودة والسلامة.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="srv-num">03</span>
+        <div class="srv-icon"><i class="fas fa-ship"></i></div>
+        <h3>الاستيراد والتصدير</h3>
+        <p>حلول لوجستية متكاملة للاستيراد والتصدير إلى جميع دول العالم بكفاءة وسرعة عالية.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="300">
+        <span class="srv-num">04</span>
+        <div class="srv-icon"><i class="fas fa-snowflake"></i></div>
+        <h3>التخزين المبرد</h3>
+        <p>منظومة تخزين مبردة حديثة تضمن الحفاظ على جودة المنتجات وطزاجتها حتى لحظة التسليم.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="400">
+        <span class="srv-num">05</span>
+        <div class="srv-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>ضمان الجودة والفحص</h3>
+        <p>فحص دقيق لجميع المنتجات للتأكد من مطابقتها للمعايير الدولية لسلامة الغذاء والصحة.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+      <div class="srv-card" data-aos="fade-up" data-aos-delay="500">
+        <span class="srv-num">06</span>
+        <div class="srv-icon"><i class="fas fa-handshake"></i></div>
+        <h3>الشراكات التجارية</h3>
+        <p>بناء شراكات استراتيجية طويلة الأمد مع الموردين والموزعين في مختلف أنحاء العالم.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== PROCESS ======================== -->
+<section id="process">
+  <div class="container">
+    <div class="process-wrap">
+      <div class="process-header">
+        <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> كيف نعمل</div>
+        <h2 class="sec-title" style="color:#fff">مسيرتنا في خدمتكم</h2>
+        <p class="sec-body">من الانتقاء الدقيق للمنتجات وحتى التسليم في وجهتكم — كل خطوة محكمة بمعاييرنا العالية.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="tl-dot"><i class="fas fa-search"></i></div>
+          <h4>الانتقاء والفرز</h4>
+          <p>نختار أجود المنتجات مباشرةً من المصادر والمزارع المعتمدة حول العالم.</p>
+        </div>
+        <div class="tl-item" data-aos="fade-up" data-aos-delay="120">
+          <div class="tl-dot"><i class="fas fa-microscope"></i></div>
+          <h4>فحص الجودة</h4>
+          <p>مختبرات متخصصة تضمن مطابقة كل منتج لمعايير السلامة الغذائية الدولية.</p>
+        </div>
+        <div class="tl-item" data-aos="fade-up" data-aos-delay="240">
+          <div class="tl-dot"><i class="fas fa-box"></i></div>
+          <h4>التعبئة والتغليف</h4>
+          <p>تغليف احترافي يحافظ على الجودة والطزاجة طوال رحلة الشحن والتخزين.</p>
+        </div>
+        <div class="tl-item" data-aos="fade-up" data-aos-delay="360">
+          <div class="tl-dot"><i class="fas fa-truck-fast"></i></div>
+          <h4>الشحن والتسليم</h4>
+          <p>شبكة شحن عالمية مبردة تضمن وصول منتجاتكم طازجة وفي الموعد المحدد.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== GALLERY ======================== -->
+<section id="gallery">
+  <div class="container">
+    <div class="gal-header">
+      <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> معرضنا</div>
+      <h2 class="sec-title">لمحات من عالمنا</h2>
+      <p class="sec-body">استعرض صور منتجاتنا وعملياتنا اللوجستية والفريق المتخصص في شركة نوارة.</p>
+    </div>
+    <div class="gal-grid" id="galGrid"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb">
+  <button class="lb-x" onclick="closeLB()"><i class="fas fa-times"></i></button>
+  <button class="lb-nav" id="lb-prev" onclick="lbNav(-1)"><i class="fas fa-chevron-right"></i></button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lb-nav" id="lb-next" onclick="lbNav(1)"><i class="fas fa-chevron-left"></i></button>
+</div>
+
+<!-- ======================== VIDEO ======================== -->
+<section id="vsec">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> الفيديو التعريفي</div>
+    <h2 class="sec-title">شاهد قصة نوارة</h2>
+    <p class="sec-body">اكتشف كيف تعمل نوارة على توصيل أجود المنتجات الغذائية إلى أسواق العالم بأعلى معايير الجودة والاحترافية.</p>
+    <div class="vid-frame" data-aos="zoom-in" data-aos-duration="800">
+      <img class="vid-thumb" src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt="فيديو نوارة"/>
+      <div class="vid-shade"></div>
+      <button class="vid-play" onclick="openVid()"><i class="fas fa-play"></i></button>
+      <div class="vid-label"><i class="fas fa-play-circle" style="margin-left:6px"></i> شاهد الفيديو التعريفي</div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div id="vmodal">
+  <button class="vm-x" onclick="closeVid()"><i class="fas fa-times"></i></button>
+  <video id="mainVid" controls>
+    <source src="video/WhatsApp Video 2026-10-02 at 10.42.31 PM.mp4" type="video/mp4"/>
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+</div>
+
+<!-- ======================== WHY US ======================== -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div data-aos="fade-right" data-aos-duration="900">
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> مزايانا</div>
+        <h2 class="sec-title">لماذا تختار<br/><span class="hi">نوارة؟</span></h2>
+        <p class="sec-body">نقدم أكثر من مجرد منتجات — نقدم ثقة مبنية على الجودة والالتزام والخبرة الممتدة لأكثر من 15 عاماً.</p>
+        <div class="why-checks">
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>منتجات معتمدة بشهادات ISO دولية</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>خبرة تزيد عن 15 عاماً في القطاع</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>شبكة توزيع تغطي أكثر من 50 دولة</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>فريق متخصص واستجابة سريعة للاحتياجات</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>أسعار تنافسية وحلول مخصصة لكل عميل</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>التزام بمعايير سلامة الغذاء العالمية</span></div>
+        </div>
+      </div>
+      <div class="why-cards-wrap" data-aos="fade-left" data-aos-duration="900">
+        <div class="w-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="w-ic"><i class="fas fa-globe-americas"></i></div>
+          <h4>انتشار عالمي</h4>
+          <p>نشاط في أسواق العالم من أوروبا إلى آسيا وأفريقيا والشرق الأوسط.</p>
+        </div>
+        <div class="w-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="w-ic"><i class="fas fa-trophy"></i></div>
+          <h4>جودة لا تُضاهى</h4>
+          <p>أعلى معايير الانتقاء والجودة في كل منتج نقدمه لعملائنا.</p>
+        </div>
+        <div class="w-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="w-ic"><i class="fas fa-shipping-fast"></i></div>
+          <h4>تسليم سريع</h4>
+          <p>بنية لوجستية متطورة تضمن التسليم في المواعيد المحددة دون تأخير.</p>
+        </div>
+        <div class="w-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="w-ic"><i class="fas fa-handshake"></i></div>
+          <h4>شراكة موثوقة</h4>
+          <p>علاقات طويلة الأمد مع عملاء وشركاء في أكثر من 50 دولة حول العالم.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CERTIFICATIONS ======================== -->
+<section id="certs">
+  <div class="container">
+    <div class="certs-inner">
+      <div class="cert-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="cert-ic"><i class="fas fa-certificate"></i></div>
+        <div class="cert-txt"><strong>ISO 9001</strong><span>إدارة الجودة</span></div>
+      </div>
+      <div class="cert-item" data-aos="fade-up" data-aos-delay="80">
+        <div class="cert-ic"><i class="fas fa-shield-alt"></i></div>
+        <div class="cert-txt"><strong>ISO 22000</strong><span>سلامة الغذاء</span></div>
+      </div>
+      <div class="cert-item" data-aos="fade-up" data-aos-delay="160">
+        <div class="cert-ic"><i class="fas fa-leaf"></i></div>
+        <div class="cert-txt"><strong>الغذاء الحلال</strong><span>معيار دولي</span></div>
+      </div>
+      <div class="cert-item" data-aos="fade-up" data-aos-delay="240">
+        <div class="cert-ic"><i class="fas fa-microscope"></i></div>
+        <div class="cert-txt"><strong>HACCP</strong><span>تحليل المخاطر</span></div>
+      </div>
+      <div class="cert-item" data-aos="fade-up" data-aos-delay="320">
+        <div class="cert-ic"><i class="fas fa-globe"></i></div>
+        <div class="cert-txt"><strong>معايير التصدير</strong><span>اعتماد دولي</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CONTACT ======================== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left" data-aos="fade-right" data-aos-duration="900">
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> تواصل معنا</div>
+        <h2 class="sec-title">نحن هنا<br/><span class="hi">لخدمتكم</span></h2>
+        <p class="sec-body">هل لديك استفسار أو طلب خاص؟ فريقنا المتخصص مستعد للرد على جميع استفساراتكم في أسرع وقت.</p>
+        <div class="c-info-cards">
+          <div class="c-info">
+            <div class="c-ic"><i class="fas fa-phone-alt"></i></div>
+            <div><h5>اتصل بنا</h5><p dir="ltr">+962 XX XXX XXXX</p></div>
+          </div>
+          <div class="c-info">
+            <div class="c-ic p"><i class="fab fa-whatsapp"></i></div>
+            <div><h5>واتساب</h5><p dir="ltr">+962 XX XXX XXXX</p></div>
+          </div>
+          <div class="c-info">
+            <div class="c-ic"><i class="fas fa-envelope"></i></div>
+            <div><h5>البريد الإلكتروني</h5><p>info@nawara-company.com</p></div>
+          </div>
+          <div class="c-info">
+            <div class="c-ic p"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h5>العنوان</h5><p>المملكة الأردنية الهاشمية</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form" data-aos="fade-left" data-aos-duration="900">
+        <h3>أرسل رسالتك</h3>
+        <form id="cForm" onsubmit="submitForm(event)">
+          <div class="f-row">
+            <div class="f-grp"><label>الاسم الكامل</label><input type="text" placeholder="أدخل اسمك" required/></div>
+            <div class="f-grp"><label>رقم الهاتف</label><input type="tel" placeholder="+962 XX XXX XXXX" required/></div>
+          </div>
+          <div class="f-grp"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com" required/></div>
+          <div class="f-grp">
+            <label>الخدمة المطلوبة</label>
+            <select>
+              <option value="">اختر الخدمة...</option>
+              <option>الخضر والفواكه الطازجة</option>
+              <option>السلع الغذائية المعبأة</option>
+              <option>الاستيراد والتصدير</option>
+              <option>التخزين المبرد</option>
+              <option>شراكة تجارية</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+          <div class="f-grp"><label>رسالتك</label><textarea placeholder="اكتب تفاصيل طلبك هنا..." required></textarea></div>
+          <button type="submit" class="f-submit" id="fBtn">
+            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <img src="img primary/logo.jpg" alt="نوارة"/>
+        <p>شركة نوارة للاستيراد والتصدير وتجارة السلع الغذائية والخضر والفواكه — رائدة في قطاعها بالجودة والالتزام والخبرة الوافية.</p>
+        <div class="ft-social">
+          <a href="#" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+          <a href="#" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>روابط سريعة</h4>
+        <div class="ft-links">
+          <a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a>
+          <a href="#process"><i class="fas fa-chevron-left"></i> كيف نعمل</a>
+          <a href="#gallery"><i class="fas fa-chevron-left"></i> معرضنا</a>
+          <a href="#why"><i class="fas fa-chevron-left"></i> لماذا نوارة</a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>خدماتنا</h4>
+        <div class="ft-links">
+          <a href="#services"><i class="fas fa-chevron-left"></i> الخضر والفواكه</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> السلع المعبأة</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> الاستيراد والتصدير</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> التخزين المبرد</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> ضمان الجودة</a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>تواصل معنا</h4>
+        <div class="ft-links">
+          <a href="tel:+962"><i class="fas fa-phone-alt"></i> +962 XX XXX XXXX</a>
+          <a href="mailto:info@nawara-company.com"><i class="fas fa-envelope"></i> info@nawara-company.com</a>
+          <a href="#contact"><i class="fas fa-map-marker-alt"></i> الأردن</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 جميع الحقوق محفوظة — <span>شركة نوارة للاستيراد والتصدير</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating buttons -->
+<button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<div class="wa-btn"><a href="https://wa.me/962XXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<!-- ======================== SCRIPTS ======================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+/* ------- AOS ------- */
+AOS.init({once:true,offset:70,duration:800,easing:'ease-out-cubic'});
+
+/* ------- Preloader ------- */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('preloader').classList.add('out'),1800);
+});
+
+/* ------- Navbar ------- */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',scrollY>60);
+  document.getElementById('to-top').classList.toggle('show',scrollY>500);
+});
+
+/* ------- Burger ------- */
+const burger=document.getElementById('burger');
+const mob=document.getElementById('mobMenu');
+burger.addEventListener('click',()=>{
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  burger.classList.remove('open');mob.classList.remove('open');
+}));
+
+/* ------- Hero Slider ------- */
+const slides=document.querySelectorAll('.h-slide');
+const dots=document.querySelectorAll('.h-dot');
+let cur=0,timer;
+function goSlide(n){
+  slides[cur].classList.remove('on');dots[cur].classList.remove('on');
+  cur=n;
+  slides[cur].classList.add('on');dots[cur].classList.add('on');
+  clearInterval(timer);timer=setInterval(()=>goSlide((cur+1)%slides.length),6000);
+}
+timer=setInterval(()=>goSlide((cur+1)%slides.length),6000);
+
+/* ------- Canvas Particles ------- */
+(function(){
+  const canvas=document.getElementById('hero-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight}
+  resize();window.addEventListener('resize',resize);
+  function Particle(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.r=Math.random()*2+.5;this.sp=Math.random()*.4+.1;
+    this.op=Math.random()*.4+.05;this.dir=Math.random()*Math.PI*2;
+  }
+  Particle.prototype.update=function(){
+    this.x+=Math.cos(this.dir)*this.sp;this.y+=Math.sin(this.dir)*this.sp*.5-this.sp*.3;
+    if(this.y<-10)this.y=H+10;if(this.x<-10)this.x=W+10;if(this.x>W+10)this.x=-10;
+  };
+  for(let i=0;i<80;i++)particles.push(new Particle());
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,230,210,${p.op})`;ctx.fill();
+      p.update();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ------- Ticker ------- */
+const tickItems=[
+  {icon:'fa-seedling',text:'خضر وفواكه طازجة'},
+  {icon:'fa-ship',text:'شحن دولي موثوق'},
+  {icon:'fa-medal',text:'جودة معتمدة ISO'},
+  {icon:'fa-globe-americas',text:'50+ دولة'},
+  {icon:'fa-snowflake',text:'تخزين مبرد حديث'},
+  {icon:'fa-handshake',text:'شراكات استراتيجية'},
+  {icon:'fa-certificate',text:'معايير عالمية'},
+  {icon:'fa-truck-fast',text:'تسليم سريع'},
+];
+const track=document.getElementById('tickerTrack');
+const double=[...tickItems,...tickItems];
+double.forEach((item,i)=>{
+  track.innerHTML+=`<span class="ticker-item"><i class="fas ${item.icon}"></i>${item.text}</span>${i<double.length-1?'<span class="ticker-sep">◆</span>':''}`;
+});
+
+/* ------- Counter Animation ------- */
+function animCounter(el){
+  const target=+el.dataset.target;
+  const suffix=el.dataset.suffix||'';
+  let start=0;const dur=2000;const step=16;
+  const inc=target/(dur/step);
+  const t=setInterval(()=>{
+    start=Math.min(start+inc,target);
+    el.textContent=(start<target?Math.floor(start):target)+suffix;
+    if(start>=target)clearInterval(t);
+  },step);
+}
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){animCounter(e.target);counterObs.unobserve(e.target)}
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-num').forEach(el=>counterObs.observe(el));
+
+/* ------- Gallery ------- */
+const imgs=[
+  'imgs sub/472038291_122192628548169124_4390531787627687345_n.jpg',
+  'imgs sub/472064389_122192629070169124_8214756420233721156_n.jpg',
+  'imgs sub/472284027_122192628584169124_7292682889609652635_n.jpg',
+  'imgs sub/472350172_122192629322169124_106350286069766277_n.jpg',
+  'imgs sub/472486345_122192629040169124_4952025500993267484_n.jpg',
+  'imgs sub/558780426_1376282313889137_341886614746940967_n.jpg',
+  'imgs sub/561426586_1345340110316691_3617507688316285897_n.jpg',
+  'imgs sub/561874875_1345340230316679_346658512236795251_n.jpg',
+  'imgs sub/571797084_1359479578902744_6990817354283532681_n.jpg',
+  'imgs sub/572266102_1359479705569398_3243105378568562580_n.jpg',
+  'imgs sub/573366142_1359479665569402_6477450301548668893_n.jpg',
+  'imgs sub/574460990_1359479738902728_7014645236900651379_n.jpg',
+  'imgs sub/574509151_1359479635569405_591408640093377178_n.jpg',
+  'imgs sub/577006013_1368807087969993_6311127644971258282_n.jpg',
+  'imgs sub/577889786_1368807144636654_203192765406535258_n.jpg',
+  'imgs sub/582838859_1376282353889133_8472355578467018001_n.jpg',
+  'imgs sub/583227280_1376282287222473_6670884839867279284_n.jpg',
+  'imgs sub/584253627_1376282230555812_7521607242545625090_n.jpg',
+  'imgs sub/597483496_1422676302583071_3514893395979379529_n.jpg',
+  'imgs sub/615820284_1422676319249736_153028561573352498_n.jpg',
+  'imgs sub/615823010_1422676212583080_7613419650313957158_n.jpg',
+  'imgs sub/616466496_1422676379249730_1127350750941568117_n.jpg',
+  'imgs sub/616855669_1422676245916410_3953652011542436269_n.jpg',
+  'imgs sub/651048797_1473132810870753_6476310604693467632_n.jpg',
+  'imgs sub/651907471_1473133360870698_7887556755728670448_n.jpg',
+  'imgs sub/652346894_1473133400870694_2422634247949299813_n.jpg',
+  'imgs sub/653391215_1473133254204042_7168582567863088931_n.jpg',
+  'imgs sub/700430874_1528108112039889_5052323775499944015_n.jpg',
+  'imgs sub/700799949_1528107908706576_686336683762199589_n.jpg',
+  'imgs sub/701030907_1528108045373229_5033216970392838353_n.jpg',
+  'imgs sub/702176661_1528107662039934_2295620263819631330_n.jpg',
+  'imgs sub/702564416_1528107595373274_845530790586218431_n.jpg',
+  'imgs sub/795132427_1631896668327699_2587525458320842227_n.jpg',
+  'imgs sub/798263703_1631896928327673_4535506463976923182_n.jpg',
+  'imgs sub/799225904_1631896821661017_8477386841049511770_n.jpg',
+  'imgs sub/799458953_1631896741661025_977888865421942745_n.jpg',
+];
+const layouts=['wide tall','','wide','','','','tall','','wide',''];
+const grid=document.getElementById('galGrid');
+imgs.slice(0,10).forEach((src,i)=>{
+  const cls=layouts[i]||'';
+  const div=document.createElement('div');
+  div.className='g-item '+cls;
+  div.setAttribute('data-aos','fade-up');
+  div.setAttribute('data-aos-delay',((i%4)*70).toString());
+  div.innerHTML=`<img src="${src}" alt="نوارة ${i+1}" loading="lazy" onerror="this.closest('.g-item').style.display='none'"/>
+    <div class="g-cap"><div class="g-cap-icon"><i class="fas fa-expand"></i></div></div>`;
+  div.addEventListener('click',()=>openLB(i));
+  grid.appendChild(div);
+});
+
+let lbIdx=0;
+function openLB(i){lbIdx=i;document.getElementById('lb-img').src=imgs[i];document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+function lbNav(d){lbIdx=(lbIdx+d+imgs.length)%imgs.length;document.getElementById('lb-img').src=imgs[lbIdx]}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLB()});
+
+/* ------- Video ------- */
+function openVid(){document.getElementById('vmodal').classList.add('on');document.getElementById('mainVid').play();document.body.style.overflow='hidden'}
+function closeVid(){document.getElementById('vmodal').classList.remove('on');const v=document.getElementById('mainVid');v.pause();v.currentTime=0;document.body.style.overflow=''}
+document.getElementById('vmodal').addEventListener('click',function(e){if(e.target===this)closeVid()});
+
+/* ------- Keyboard ------- */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeLB();closeVid()}
+  if(document.getElementById('lb').classList.contains('on')){
+    if(e.key==='ArrowLeft')lbNav(1);
+    if(e.key==='ArrowRight')lbNav(-1);
+  }
+});
+
+/* ------- Form ------- */
+function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('fBtn');
+  btn.innerHTML='<i class="fas fa-check-circle"></i> تم الإرسال بنجاح!';
+  btn.classList.add('success');
+  setTimeout(()=>{
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> إرسال الرسالة';
+    btn.classList.remove('success');
+    document.getElementById('cForm').reset();
+  },3500);
+}
+</script>
+</body>
+</html>
