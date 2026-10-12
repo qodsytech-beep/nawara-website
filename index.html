@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>نوارة | للاستيراد والتصدير والتجارة الغذائية</title>
+<title data-i18n="page_title">نوارة | للاستيراد والتصدير والتجارة الغذائية</title>
 <link rel="icon" href="img primary/logo.jpg" type="image/jpeg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -40,14 +40,19 @@
 }
 
 /* ============================================================
-   RESET
+   RESET & MOBILE OVERFLOW FIXES
 ============================================================ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;max-width:100%;}
+html, body { overflow-x: hidden; max-width: 100%; }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit;border:none;outline:none}
+
+.container { overflow: hidden; max-width: 1300px; margin: 0 auto; padding: 0 40px; }
+.ticker { overflow: hidden; }
+section { overflow: hidden; }
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:6px}
@@ -73,7 +78,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
 @keyframes pre-fill{from{width:0}to{width:100%}}
 
 /* ============================================================
-   NAVBAR
+   NAVBAR & LANG TOGGLE
 ============================================================ */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
@@ -87,7 +92,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   border-bottom:1px solid rgba(255,255,255,.06);
   box-shadow:0 4px 40px rgba(0,0,0,.3);
 }
-.nav-wrap{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:82px}
+.nav-wrap{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:82px;gap:12px;}
 .nav-logo img{height:58px;border-radius:10px;transition:all .3s var(--ease)}
 .nav-logo img:hover{transform:scale(1.05)}
 
@@ -117,8 +122,33 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
 .nav-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,113,79,.5) !important}
 .nav-cta-btn::after{display:none !important}
 
+/* Language toggle button */
+.lang-btn {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .3s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.lang-btn:hover { background: rgba(255,255,255,.2); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 /* hamburger */
-.burger{display:none;flex-direction:column;gap:6px;padding:8px;border-radius:8px;background:rgba(255,255,255,.08)}
+.burger{display:none;flex-direction:column;gap:6px;padding:8px;border-radius:8px;background:rgba(255,255,255,.08);flex-shrink:0}
 .burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s var(--ease);display:block}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
@@ -133,7 +163,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   backdrop-filter:blur(24px);
   padding:32px 24px;
   flex-direction:column;gap:8px;list-style:none;
-  transition:right .4s var(--ease);
+  transition:all .4s var(--ease);
   border-left:1px solid rgba(255,255,255,.08);
   z-index:999;
 }
@@ -150,11 +180,12 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
 ============================================================ */
 #hero{
   position:relative;min-height:100vh;
-  display:flex;align-items:center;overflow:hidden;
+  display:flex;align-items:center;
+  max-width:100vw;
 }
 
 /* Canvas particles */
-#hero-canvas{position:absolute;inset:0;z-index:0}
+#hero-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;}
 
 /* Slides */
 .hero-slides{position:absolute;inset:0;z-index:1}
@@ -181,6 +212,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   padding-top:82px;
   display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
   min-height:100vh;
+  width:100%;
 }
 .hero-left{}
 .hero-eyebrow{
@@ -193,7 +225,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   text-transform:uppercase;margin-bottom:28px;
   backdrop-filter:blur(8px);
 }
-.hero-eyebrow span{width:6px;height:6px;background:var(--p2);border-radius:50%;animation:blink 1.5s infinite}
+.hero-eyebrow span{width:6px;height:6px;background:var(--p2);border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero-h1{
@@ -320,7 +352,6 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
    SECTION COMMONS
 ============================================================ */
 .sec{padding:110px 0}
-.container{max-width:1300px;margin:0 auto;padding:0 40px}
 .sec-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
@@ -555,19 +586,21 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
 
 /* Filter tabs */
 .gal-filters{
-  display:flex;gap:12px;flex-wrap:wrap;
+  display:flex;gap:10px;flex-wrap:wrap;
+  justify-content:center;
   margin-bottom:40px;
 }
 .gal-btn{
-  padding:10px 24px;border-radius:50px;
-  background:transparent;border:2px solid rgba(26,61,43,.15);
-  color:var(--text2);font-family:'Cairo',sans-serif;
+  padding:9px 22px;border-radius:50px;
+  background:transparent;border:1.5px solid var(--g3);
+  color:var(--g3);font-family:inherit;
   font-size:.88rem;font-weight:600;
   transition:all .3s var(--ease);
 }
 .gal-btn.active,.gal-btn:hover{
-  background:var(--g2);border-color:var(--g2);color:#fff;
-  box-shadow:0 4px 16px rgba(46,107,68,.35);
+  background:var(--g3);color:#fff;
+  box-shadow:0 4px 16px rgba(46,107,68,.3);
+  transform:translateY(-2px);
 }
 
 /* Masonry grid */
@@ -602,30 +635,6 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   display:flex;align-items:center;justify-content:center;
   color:#fff;margin-bottom:auto;
   align-self:flex-end;
-}
-
-/* Gallery Filter Buttons */
-.gal-filters{
-  display:flex;flex-wrap:wrap;gap:10px;
-  justify-content:center;
-  margin-bottom:40px;
-}
-.gal-btn{
-  padding:9px 22px;
-  border-radius:50px;
-  background:transparent;
-  border:1.5px solid var(--g3);
-  color:var(--g3);
-  font-family:'Cairo',sans-serif;
-  font-size:.88rem;font-weight:600;
-  cursor:pointer;
-  transition:all .3s var(--ease);
-}
-.gal-btn:hover,.gal-btn.active{
-  background:var(--g3);
-  color:#fff;
-  box-shadow:0 4px 16px rgba(46,107,68,.3);
-  transform:translateY(-2px);
 }
 
 /* Lightbox */
@@ -866,7 +875,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   padding:14px 18px;
   border:2px solid rgba(26,61,43,.1);
   border-radius:14px;
-  font-family:'Cairo',sans-serif;font-size:.95rem;
+  font-family:inherit;font-size:.95rem;
   color:var(--text);background:var(--cream);
   outline:none;transition:all .3s var(--ease);
 }
@@ -879,7 +888,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   width:100%;padding:17px;
   background:linear-gradient(135deg,var(--g3),var(--g1));
   color:#fff;border-radius:16px;
-  font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:700;
+  font-family:inherit;font-size:1.05rem;font-weight:700;
   display:flex;align-items:center;justify-content:center;gap:10px;
   box-shadow:0 8px 30px rgba(46,107,68,.4);
   transition:all .35s var(--ease-back);
@@ -959,6 +968,126 @@ footer{background:var(--dark);padding:80px 0 0}
 .wa-btn a:hover{transform:scale(1.12) rotate(-10deg);box-shadow:0 12px 36px rgba(37,211,102,.55)}
 
 /* ============================================================
+   LTR SPECIFIC STYLES
+============================================================ */
+html[dir="ltr"] body {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+html[dir="ltr"] .a-badge {
+  right: auto;
+  left: -24px;
+}
+html[dir="ltr"] .a-deco {
+  right: auto;
+  left: 30px;
+}
+html[dir="ltr"] .a-img-1 {
+  right: auto;
+  left: 0;
+}
+html[dir="ltr"] .a-img-2 {
+  left: auto;
+  right: 0;
+}
+html[dir="ltr"] .a-feat {
+  border-right: none;
+  border-left: 4px solid transparent;
+}
+html[dir="ltr"] .a-feat::after {
+  right: auto;
+  left: 0;
+  border-radius: 18px 0 0 18px;
+}
+html[dir="ltr"] .a-feat:hover {
+  transform: translateX(8px);
+}
+html[dir="ltr"] .hero-card:hover {
+  transform: translateX(6px);
+}
+html[dir="ltr"] .srv-num {
+  left: auto;
+  right: 24px;
+}
+html[dir="ltr"] .srv-arrow {
+  transform: translateX(-10px);
+}
+html[dir="ltr"] .srv-card:hover .srv-arrow {
+  transform: translateX(0);
+}
+html[dir="ltr"] .srv-arrow i {
+  transform: rotate(180deg);
+}
+html[dir="ltr"] .btn-prime .ic i {
+  transform: rotate(180deg);
+}
+html[dir="ltr"] .btn-prime:hover .ic {
+  transform: rotate(15deg);
+}
+html[dir="ltr"] .why-row:hover {
+  transform: translateX(10px);
+}
+html[dir="ltr"] .c-info:hover {
+  transform: translateX(8px);
+}
+html[dir="ltr"] .stat-item {
+  border-left: none;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+html[dir="ltr"] .stat-item:last-child {
+  border-right: none;
+}
+html[dir="ltr"] .ft-col h4::after {
+  right: auto;
+  left: 0;
+}
+html[dir="ltr"] .ft-links a:hover {
+  padding-right: 0;
+  padding-left: 8px;
+}
+html[dir="ltr"] .ft-links a i {
+  transform: scaleX(-1);
+}
+html[dir="ltr"] .ft-links a:hover i {
+  transform: scaleX(-1) translateX(-4px);
+}
+html[dir="ltr"] .vid-label {
+  right: auto;
+  left: 28px;
+}
+html[dir="ltr"] #to-top,
+html[dir="ltr"] .wa-btn {
+  left: auto;
+  right: 36px;
+}
+html[dir="ltr"] .lb-x,
+html[dir="ltr"] .vm-x {
+  left: auto;
+  right: 24px;
+}
+html[dir="ltr"] #lb-prev {
+  right: auto;
+  left: 20px;
+}
+html[dir="ltr"] #lb-next {
+  left: auto;
+  right: 20px;
+}
+html[dir="ltr"] .mob-menu {
+  right: auto;
+  left: -100%;
+  border-left: none;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+html[dir="ltr"] .mob-menu.open {
+  left: 0;
+  right: auto;
+}
+html[dir="ltr"] .mob-menu li a:hover {
+  padding-right: 18px;
+  padding-left: 24px;
+}
+
+/* ============================================================
    RESPONSIVE
 ============================================================ */
 @media(max-width:1024px){
@@ -967,6 +1096,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
   .about-imgs{height:340px}
   .a-badge{right:-12px}
+  html[dir="ltr"] .a-badge{left:-12px;right:auto}
   .srv-grid{grid-template-columns:repeat(2,1fr)}
   .timeline{grid-template-columns:repeat(2,1fr);gap:40px}
   .timeline::before{display:none}
@@ -983,7 +1113,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
   .g-item.wide,.g-item.tall{grid-column:span 1;grid-row:span 1}
   .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .stat-item{border-left:none;border-bottom:1px solid rgba(255,255,255,.07)}
+  .stat-item{border-left:none;border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
   .why-cards-wrap{grid-template-columns:1fr}
   .ft-grid{grid-template-columns:1fr}
   .certs-inner{flex-direction:column}
@@ -991,12 +1121,21 @@ footer{background:var(--dark);padding:80px 0 0}
   .f-row{grid-template-columns:1fr}
   .contact-form{padding:32px 24px}
   .hero-btns{flex-direction:column;align-items:flex-start}
+
+  /* Disable wide AOS animations on mobile */
+  [data-aos='fade-left'], [data-aos='fade-right'] {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
 @media(max-width:480px){
   .hero-h1{font-size:2.2rem}
   .nav-wrap{height:70px}
   .mob-menu{top:70px;height:calc(100vh - 70px)}
   .gal-grid{grid-template-columns:1fr}
+  #to-top, .wa-btn { left: 16px; }
+  html[dir="ltr"] #to-top, html[dir="ltr"] .wa-btn { right: 16px; left: auto; }
 }
 </style>
 </head>
@@ -1014,29 +1153,36 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="nav-wrap">
     <a href="#hero" class="nav-logo"><img src="img primary/logo.jpg" alt="نوارة"/></a>
     <ul class="nav-menu">
-      <li><a href="#about">من نحن</a></li>
-      <li><a href="#services">خدماتنا</a></li>
-      <li><a href="#process">كيف نعمل</a></li>
-      <li><a href="#gallery">معرضنا</a></li>
-      <li><a href="#vsec">الفيديو</a></li>
-      <li><a href="#why">لماذا نوارة</a></li>
-      <li><a href="#contact" class="nav-cta-btn">تواصل معنا</a></li>
+      <li><a href="#about" data-i18n="nav_about">من نحن</a></li>
+      <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
+      <li><a href="#process" data-i18n="nav_process">كيف نعمل</a></li>
+      <li><a href="#gallery" data-i18n="nav_gallery">معرضنا</a></li>
+      <li><a href="#vsec" data-i18n="nav_video">الفيديو</a></li>
+      <li><a href="#why" data-i18n="nav_why">لماذا نوارة</a></li>
+      <li><a href="#contact" class="nav-cta-btn" data-i18n="nav_contact">تواصل معنا</a></li>
     </ul>
-    <button class="burger" id="burger" aria-label="القائمة">
-      <span></span><span></span><span></span>
-    </button>
+
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()" aria-label="Toggle language">
+        <i class="fas fa-globe"></i>
+        <span id="langLabel">EN</span>
+      </button>
+      <button class="burger" id="burger" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
 <ul class="mob-menu" id="mobMenu">
-  <li><a href="#about">من نحن</a></li>
-  <li><a href="#services">خدماتنا</a></li>
-  <li><a href="#process">كيف نعمل</a></li>
-  <li><a href="#gallery">معرضنا</a></li>
-  <li><a href="#vsec">الفيديو</a></li>
-  <li><a href="#why">لماذا نوارة</a></li>
-  <li><a href="#contact">تواصل معنا</a></li>
+  <li><a href="#about" data-i18n="nav_about">من نحن</a></li>
+  <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
+  <li><a href="#process" data-i18n="nav_process">كيف نعمل</a></li>
+  <li><a href="#gallery" data-i18n="nav_gallery">معرضنا</a></li>
+  <li><a href="#vsec" data-i18n="nav_video">الفيديو</a></li>
+  <li><a href="#why" data-i18n="nav_why">لماذا نوارة</a></li>
+  <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
 </ul>
 
 <!-- ======================== HERO ======================== -->
@@ -1054,24 +1200,24 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
       <div class="hero-eyebrow">
         <span></span>
-        رائدة في استيراد وتصدير السلع الغذائية
+        <span data-i18n="hero_eyebrow">رائدة في استيراد وتصدير السلع الغذائية</span>
       </div>
-      <p class="hero-sub-title">Nawara Business Company</p>
+      <p class="hero-sub-title" data-i18n="hero_subtitle">Nawara Business Company</p>
       <h1 class="hero-h1">
-        جسر الخير<br/>
-        <span class="accent">لكل دول العالم</span>
+        <span data-i18n="hero_title_1">جسر الخير</span><br/>
+        <span class="accent" data-i18n="hero_title_2">لكل دول العالم</span>
       </h1>
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n="hero_desc">
         جودة منتقاة وخبرة ممتدة والتزام بالمعايير العالمية في الخضر والفواكه والسلع الغذائية — نوارة شريكك التجاري الأول.
       </p>
       <div class="hero-btns">
         <a href="#about" class="btn-prime">
-          <span>اكتشف نوارة</span>
+          <span data-i18n="hero_btn_explore">اكتشف نوارة</span>
           <span class="ic"><i class="fas fa-arrow-left"></i></span>
         </a>
         <button class="btn-ghost" onclick="openVid()">
           <span class="play-ring"><i class="fas fa-play"></i></span>
-          <span>شاهد الفيديو</span>
+          <span data-i18n="hero_btn_video">شاهد الفيديو</span>
         </button>
       </div>
     </div>
@@ -1081,8 +1227,8 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="hc-row">
           <div class="hc-icon"><i class="fas fa-medal"></i></div>
           <div class="hc-txt">
-            <h5>جودة معتمدة دولياً</h5>
-            <p>شهادات ISO وأعلى معايير سلامة الغذاء</p>
+            <h5 data-i18n="hero_card1_title">جودة معتمدة دولياً</h5>
+            <p data-i18n="hero_card1_desc">شهادات ISO وأعلى معايير سلامة الغذاء</p>
           </div>
         </div>
       </div>
@@ -1090,8 +1236,8 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="hc-row">
           <div class="hc-icon p"><i class="fas fa-globe-americas"></i></div>
           <div class="hc-txt">
-            <h5>انتشار في 50+ دولة</h5>
-            <p>شبكة تصدير تغطي أسواق أوروبا وآسيا وأفريقيا</p>
+            <h5 data-i18n="hero_card2_title">انتشار في 50+ دولة</h5>
+            <p data-i18n="hero_card2_desc">شبكة تصدير تغطي أسواق أوروبا وآسيا وأفريقيا</p>
           </div>
         </div>
       </div>
@@ -1099,8 +1245,8 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="hc-row">
           <div class="hc-icon gold"><i class="fas fa-shipping-fast"></i></div>
           <div class="hc-txt">
-            <h5>تسليم سريع ومضمون</h5>
-            <p>لوجستيات متطورة تضمن الوصول في الوقت المحدد</p>
+            <h5 data-i18n="hero_card3_title">تسليم سريع ومضمون</h5>
+            <p data-i18n="hero_card3_desc">لوجستيات متطورة تضمن الوصول في الوقت المحدد</p>
           </div>
         </div>
       </div>
@@ -1127,19 +1273,19 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="stats-inner">
     <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
       <span class="stat-num" data-target="10" data-suffix="+">0</span>
-      <span class="stat-lbl">سنوات خبرة</span>
+      <span class="stat-lbl" data-i18n="stat_exp">سنوات خبرة</span>
     </div>
     <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
       <span class="stat-num" data-target="30" data-suffix="+">0</span>
-      <span class="stat-lbl">دولة مصدّر إليها</span>
+      <span class="stat-lbl" data-i18n="stat_countries">دولة مصدّر إليها</span>
     </div>
     <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
       <span class="stat-num" data-target="300" data-suffix="+">0</span>
-      <span class="stat-lbl">عميل موثوق</span>
+      <span class="stat-lbl" data-i18n="stat_clients">عميل موثوق</span>
     </div>
     <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-      <span class="stat-num" data-target="100" data-suffix="٪">0</span>
-      <span class="stat-lbl">التزام بالجودة</span>
+      <span class="stat-num" data-target="100" data-suffix="%">0</span>
+      <span class="stat-lbl" data-i18n="stat_quality">التزام بالجودة</span>
     </div>
   </div>
 </div>
@@ -1153,36 +1299,36 @@ footer{background:var(--dark);padding:80px 0 0}
         <img class="a-img-2" src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt=""/>
         <div class="a-badge">
           <strong>+10</strong>
-          <span>عاماً من التميز</span>
+          <span data-i18n="about_badge">عاماً من التميز</span>
         </div>
         <div class="a-deco"><i class="fas fa-leaf"></i></div>
       </div>
       <div data-aos="fade-right" data-aos-duration="900">
-        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> من نحن</div>
-        <h2 class="sec-title">رائدون في قطاع<br/><span class="hi">السلع الغذائية العالمية</span></h2>
-        <p class="sec-body">
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="about_tag">من نحن</span></div>
+        <h2 class="sec-title"><span data-i18n="about_title_1">رائدون في قطاع</span><br/><span class="hi" data-i18n="about_title_2">السلع الغذائية العالمية</span></h2>
+        <p class="sec-body" data-i18n="about_body">
           نحن في شركة نوارة لتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة نفخر بمسيرة طويلة وراسخة من التمرس والخبرة العميقة في هذا المجال الحيوي. نتميز بجودتنا العالية، واستجابتنا السريعة لكافة الاحتياجات، مستندين إلى خبرات استثنائية تمتد وتتكامل عبر أسواق إقليمية وعالمية رئيسية، وعلى رأسها جمهورية مصر العربية ودولة الإمارات العربية المتحدة.
         </p>
         <div class="about-list">
           <div class="a-feat" data-aos="fade-right" data-aos-delay="100">
             <div class="a-feat-ic"><i class="fas fa-medal"></i></div>
             <div>
-              <h4>جودة معتمدة دولياً</h4>
-              <p>نلتزم في شركة نوارة بتقديم منتجات تخضع لأقسى معايير الجودة العالمية وسلامة الغذاء. حيث تحظى منشآتنا ومنتجاتنا باعتماد شهادات الأيزو (ISO) العالمية، مما يضمن أن كل ثمرة، سلعة، أو صنف معلّب يصل إلى عملائنا عبر القارات قد مرّ بأرقى منظومات الرقابة والاختبار.</p>
+              <h4 data-i18n="about_feat1_title">جودة معتمدة دولياً</h4>
+              <p data-i18n="about_feat1_desc">نلتزم في شركة نوارة بتقديم منتجات تخضع لأقسى معايير الجودة العالمية وسلامة الغذاء. حيث تحظى منشآتنا ومنتجاتنا باعتماد شهادات الأيزو (ISO) العالمية، مما يضمن أن كل ثمرة، سلعة، أو صنف معلّب يصل إلى عملائنا عبر القارات قد مرّ بأرقى منظومات الرقابة والاختبار.</p>
             </div>
           </div>
           <div class="a-feat" data-aos="fade-right" data-aos-delay="200">
             <div class="a-feat-ic"><i class="fas fa-shipping-fast"></i></div>
             <div>
-              <h4>استجابة سريعة وتسليم موثوق</h4>
-              <p>أسسنا شبكة لوجستية متكاملة وعالية الكفاءة تربط بين خطوط الإمداد في مصر والإمارات وكافة محطات التصدير العالمية. نضمن لعملائنا استجابة فورية، ومرونة تامة في تلبية الطلبيات، وإدارة دقيقة لسلاسل التوريد تكفل وصول السلع في المواعيد المحددة وبأعلى معايير الحفظ والسلامة.</p>
+              <h4 data-i18n="about_feat2_title">استجابة سريعة وتسليم موثوق</h4>
+              <p data-i18n="about_feat2_desc">أسسنا شبكة لوجستية متكاملة وعالية الكفاءة تربط بين خطوط الإمداد في مصر والإمارات وكافة محطات التصدير العالمية. نضمن لعملائنا استجابة فورية، ومرونة تامة في تلبية الطلبيات، وإدارة دقيقة لسلاسل التوريد تكفل وصول السلع في المواعيد المحددة وبأعلى معايير الحفظ والسلامة.</p>
             </div>
           </div>
           <div class="a-feat" data-aos="fade-right" data-aos-delay="300">
             <div class="a-feat-ic"><i class="fas fa-globe-americas"></i></div>
             <div>
-              <h4>شبكة تصدير عالمية</h4>
-              <p>نمتلك شبكة تصدير عالمية واسعة وراسخة، حيث نصدّر منتجاتنا المتميزة إلى أكثر من 30 دولة حول العالم بالتعاون مع نخبة من الشركاء الاستراتيجيين الموثوقين، لنكون الخيار الأول والمفضل للتجارة الدولية الموثوقة.</p>
+              <h4 data-i18n="about_feat3_title">شبكة تصدير عالمية</h4>
+              <p data-i18n="about_feat3_desc">نمتلك شبكة تصدير عالمية واسعة وراسخة، حيث نصدّر منتجاتنا المتميزة إلى أكثر من 30 دولة حول العالم بالتعاون مع نخبة من الشركاء الاستراتيجيين الموثوقين، لنكون الخيار الأول والمفضل للتجارة الدولية الموثوقة.</p>
             </div>
           </div>
         </div>
@@ -1195,52 +1341,52 @@ footer{background:var(--dark);padding:80px 0 0}
 <section id="services">
   <div class="container">
     <div class="sec-center">
-      <div class="sec-tag" style="justify-content:center;gap:8px"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> خدماتنا</div>
-      <h2 class="sec-title">ما نقدمه لعملائنا</h2>
-      <p class="sec-body">منظومة متكاملة من الخدمات في استيراد وتصدير السلع الغذائية والخضر والفواكه على مستوى عالمي.</p>
+      <div class="sec-tag" style="justify-content:center;gap:8px"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="services_tag">خدماتنا</span></div>
+      <h2 class="sec-title" data-i18n="services_title">ما نقدمه لعملائنا</h2>
+      <p class="sec-body" data-i18n="services_subtitle">منظومة متكاملة من الخدمات في استيراد وتصدير السلع الغذائية والخضر والفواكه على مستوى عالمي.</p>
     </div>
     <div class="srv-grid">
       <div class="srv-card" data-aos="fade-up" data-aos-delay="0">
         <span class="srv-num">01</span>
         <div class="srv-icon"><i class="fas fa-seedling"></i></div>
-        <h3>الخضر والفواكه الطازجة</h3>
-        <p>توريد أفضل أنواع الخضراوات والفواكه الطازجة المنتقاة بعناية من أجود المزارع العالمية.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv1_title">الخضر والفواكه الطازجة</h3>
+        <p data-i18n="srv1_desc">توريد أفضل أنواع الخضراوات والفواكه الطازجة المنتقاة بعناية من أجود المزارع العالمية.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
       <div class="srv-card" data-aos="fade-up" data-aos-delay="100">
         <span class="srv-num">02</span>
         <div class="srv-icon"><i class="fas fa-box-open"></i></div>
-        <h3>السلع الغذائية المعبأة</h3>
-        <p>مجموعة متنوعة من المواد الغذائية المعبأة والمعالجة وفق أعلى معايير الجودة والسلامة.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv2_title">السلع الغذائية المعبأة</h3>
+        <p data-i18n="srv2_desc">مجموعة متنوعة من المواد الغذائية المعبأة والمعالجة وفق أعلى معايير الجودة والسلامة.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
       <div class="srv-card" data-aos="fade-up" data-aos-delay="200">
         <span class="srv-num">03</span>
         <div class="srv-icon"><i class="fas fa-ship"></i></div>
-        <h3>الاستيراد والتصدير</h3>
-        <p>حلول لوجستية متكاملة للاستيراد والتصدير إلى جميع دول العالم بكفاءة وسرعة عالية.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv3_title">الاستيراد والتصدير</h3>
+        <p data-i18n="srv3_desc">حلول لوجستية متكاملة للاستيراد والتصدير إلى جميع دول العالم بكفاءة وسرعة عالية.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
       <div class="srv-card" data-aos="fade-up" data-aos-delay="300">
         <span class="srv-num">04</span>
         <div class="srv-icon"><i class="fas fa-snowflake"></i></div>
-        <h3>التخزين المبرد</h3>
-        <p>منظومة تخزين مبردة حديثة تضمن الحفاظ على جودة المنتجات وطزاجتها حتى لحظة التسليم.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv4_title">التخزين المبرد</h3>
+        <p data-i18n="srv4_desc">منظومة تخزين مبردة حديثة تضمن الحفاظ على جودة المنتجات وطزاجتها حتى لحظة التسليم.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
       <div class="srv-card" data-aos="fade-up" data-aos-delay="400">
         <span class="srv-num">05</span>
         <div class="srv-icon"><i class="fas fa-clipboard-check"></i></div>
-        <h3>ضمان الجودة والفحص</h3>
-        <p>فحص دقيق لجميع المنتجات للتأكد من مطابقتها للمعايير الدولية لسلامة الغذاء والصحة.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv5_title">ضمان الجودة والفحص</h3>
+        <p data-i18n="srv5_desc">فحص دقيق لجميع المنتجات للتأكد من مطابقتها للمعايير الدولية لسلامة الغذاء والصحة.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
       <div class="srv-card" data-aos="fade-up" data-aos-delay="500">
         <span class="srv-num">06</span>
         <div class="srv-icon"><i class="fas fa-handshake"></i></div>
-        <h3>الشراكات التجارية</h3>
-        <p>بناء شراكات استراتيجية طويلة الأمد مع الموردين والموزعين في مختلف أنحاء العالم.</p>
-        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> اكتشف أكثر</div>
+        <h3 data-i18n="srv6_title">الشراكات التجارية</h3>
+        <p data-i18n="srv6_desc">بناء شراكات استراتيجية طويلة الأمد مع الموردين والموزعين في مختلف أنحاء العالم.</p>
+        <div class="srv-arrow"><i class="fas fa-arrow-left"></i> <span data-i18n="srv_arrow">اكتشف أكثر</span></div>
       </div>
     </div>
   </div>
@@ -1251,30 +1397,30 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="container">
     <div class="process-wrap">
       <div class="process-header">
-        <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> كيف نعمل</div>
-        <h2 class="sec-title" style="color:#fff">مسيرتنا في خدمتكم</h2>
-        <p class="sec-body">من الانتقاء الدقيق للمنتجات وحتى التسليم في وجهتكم — كل خطوة محكمة بمعاييرنا العالية.</p>
+        <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="process_tag">كيف نعمل</span></div>
+        <h2 class="sec-title" style="color:#fff" data-i18n="process_title">مسيرتنا في خدمتكم</h2>
+        <p class="sec-body" data-i18n="process_subtitle">من الانتقاء الدقيق للمنتجات وحتى التسليم في وجهتكم — كل خطوة محكمة بمعاييرنا العالية.</p>
       </div>
       <div class="timeline">
         <div class="tl-item" data-aos="fade-up" data-aos-delay="0">
           <div class="tl-dot"><i class="fas fa-search"></i></div>
-          <h4>الانتقاء والفرز</h4>
-          <p>نختار أجود المنتجات مباشرةً من المصادر والمزارع المعتمدة حول العالم.</p>
+          <h4 data-i18n="step1_title">الانتقاء والفرز</h4>
+          <p data-i18n="step1_desc">نختار أجود المنتجات مباشرةً من المصادر والمزارع المعتمدة حول العالم.</p>
         </div>
         <div class="tl-item" data-aos="fade-up" data-aos-delay="120">
           <div class="tl-dot"><i class="fas fa-microscope"></i></div>
-          <h4>فحص الجودة</h4>
-          <p>مختبرات متخصصة تضمن مطابقة كل منتج لمعايير السلامة الغذائية الدولية.</p>
+          <h4 data-i18n="step2_title">فحص الجودة</h4>
+          <p data-i18n="step2_desc">مختبرات متخصصة تضمن مطابقة كل منتج لمعايير السلامة الغذائية الدولية.</p>
         </div>
         <div class="tl-item" data-aos="fade-up" data-aos-delay="240">
           <div class="tl-dot"><i class="fas fa-box"></i></div>
-          <h4>التعبئة والتغليف</h4>
-          <p>تغليف احترافي يحافظ على الجودة والطزاجة طوال رحلة الشحن والتخزين.</p>
+          <h4 data-i18n="step3_title">التعبئة والتغليف</h4>
+          <p data-i18n="step3_desc">تغليف احترافي يحافظ على الجودة والطزاجة طوال رحلة الشحن والتخزين.</p>
         </div>
         <div class="tl-item" data-aos="fade-up" data-aos-delay="360">
           <div class="tl-dot"><i class="fas fa-truck-fast"></i></div>
-          <h4>الشحن والتسليم</h4>
-          <p>شبكة شحن عالمية مبردة تضمن وصول منتجاتكم طازجة وفي الموعد المحدد.</p>
+          <h4 data-i18n="step4_title">الشحن والتسليم</h4>
+          <p data-i18n="step4_desc">شبكة شحن عالمية مبردة تضمن وصول منتجاتكم طازجة وفي الموعد المحدد.</p>
         </div>
       </div>
     </div>
@@ -1285,9 +1431,9 @@ footer{background:var(--dark);padding:80px 0 0}
 <section id="gallery">
   <div class="container">
     <div class="gal-header">
-      <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> معرضنا</div>
-      <h2 class="sec-title">لمحات من عالمنا</h2>
-      <p class="sec-body">استعرض صور منتجاتنا وعملياتنا اللوجستية والفريق المتخصص في شركة نوارة.</p>
+      <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="gallery_tag">معرضنا</span></div>
+      <h2 class="sec-title" data-i18n="gallery_title">لمحات من عالمنا</h2>
+      <p class="sec-body" data-i18n="gallery_subtitle">استعرض صور منتجاتنا وعملياتنا اللوجستية والفريق المتخصص في شركة نوارة.</p>
     </div>
     <div class="gal-grid" id="galGrid"></div>
   </div>
@@ -1304,14 +1450,14 @@ footer{background:var(--dark);padding:80px 0 0}
 <!-- ======================== VIDEO ======================== -->
 <section id="vsec">
   <div class="container" style="position:relative;z-index:1">
-    <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> الفيديو التعريفي</div>
-    <h2 class="sec-title">شاهد قصة نوارة</h2>
-    <p class="sec-body">اكتشف كيف تعمل نوارة على توصيل أجود المنتجات الغذائية إلى أسواق العالم بأعلى معايير الجودة والاحترافية.</p>
+    <div class="sec-tag" style="justify-content:center;color:var(--p3)"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="video_tag">الفيديو التعريفي</span></div>
+    <h2 class="sec-title" data-i18n="video_title">شاهد قصة نوارة</h2>
+    <p class="sec-body" data-i18n="video_subtitle">اكتشف كيف تعمل نوارة على توصيل أجود المنتجات الغذائية إلى أسواق العالم بأعلى معايير الجودة والاحترافية.</p>
     <div class="vid-frame" data-aos="zoom-in" data-aos-duration="800">
       <img class="vid-thumb" src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt="فيديو نوارة"/>
       <div class="vid-shade"></div>
-      <button class="vid-play" onclick="openVid()"><i class="fas fa-play"></i></button>
-      <div class="vid-label"><i class="fas fa-play-circle" style="margin-left:6px"></i> شاهد الفيديو التعريفي</div>
+      <button class="vid-play" onclick="openVid()" aria-label="تشغيل الفيديو"><i class="fas fa-play"></i></button>
+      <div class="vid-label"><i class="fas fa-play-circle" style="margin-left:6px"></i> <span data-i18n="video_label">شاهد الفيديو التعريفي</span></div>
     </div>
   </div>
 </section>
@@ -1330,38 +1476,38 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="container">
     <div class="why-grid">
       <div data-aos="fade-right" data-aos-duration="900">
-        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> مزايانا</div>
-        <h2 class="sec-title">لماذا تختار<br/><span class="hi">نوارة؟</span></h2>
-        <p class="sec-body">نقدم أكثر من مجرد منتجات — نقدم ثقة مبنية على الجودة والالتزام والخبرة الممتدة لأكثر من 15 عاماً.</p>
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="why_tag">مزايانا</span></div>
+        <h2 class="sec-title"><span data-i18n="why_title_1">لماذا تختار</span><br/><span class="hi" data-i18n="why_title_2">نوارة؟</span></h2>
+        <p class="sec-body" data-i18n="why_subtitle">نقدم أكثر من مجرد منتجات — نقدم ثقة مبنية على الجودة والالتزام والخبرة الممتدة لأكثر من 10 سنوات.</p>
         <div class="why-checks">
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>منتجات معتمدة بشهادات ISO دولية</span></div>
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>خبرة تزيد عن 15 عاماً في القطاع</span></div>
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>شبكة توزيع تغطي أكثر من 50 دولة</span></div>
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>فريق متخصص واستجابة سريعة للاحتياجات</span></div>
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>أسعار تنافسية وحلول مخصصة لكل عميل</span></div>
-          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span>التزام بمعايير سلامة الغذاء العالمية</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check1">منتجات معتمدة بشهادات ISO دولية</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check2">خبرة تزيد عن 10 أعوام في القطاع</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check3">شبكة توزيع تغطي أكثر من 30 دولة</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check4">فريق متخصص واستجابة سريعة للاحتياجات</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check5">أسعار تنافسية وحلول مخصصة لكل عميل</span></div>
+          <div class="why-row"><div class="why-chk"><i class="fas fa-check"></i></div><span data-i18n="why_check6">التزام بمعايير سلامة الغذاء العالمية</span></div>
         </div>
       </div>
       <div class="why-cards-wrap" data-aos="fade-left" data-aos-duration="900">
         <div class="w-card" data-aos="zoom-in" data-aos-delay="100">
           <div class="w-ic"><i class="fas fa-globe-americas"></i></div>
-          <h4>انتشار عالمي</h4>
-          <p>نشاط في أسواق العالم من أوروبا إلى آسيا وأفريقيا والشرق الأوسط.</p>
+          <h4 data-i18n="why_card1_title">انتشار عالمي</h4>
+          <p data-i18n="why_card1_desc">نشاط في أسواق العالم من أوروبا إلى آسيا وأفريقيا والشرق الأوسط.</p>
         </div>
         <div class="w-card" data-aos="zoom-in" data-aos-delay="200">
           <div class="w-ic"><i class="fas fa-trophy"></i></div>
-          <h4>جودة لا تُضاهى</h4>
-          <p>أعلى معايير الانتقاء والجودة في كل منتج نقدمه لعملائنا.</p>
+          <h4 data-i18n="why_card2_title">جودة لا تُضاهى</h4>
+          <p data-i18n="why_card2_desc">أعلى معايير الانتقاء والجودة في كل منتج نقدمه لعملائنا.</p>
         </div>
         <div class="w-card" data-aos="zoom-in" data-aos-delay="300">
           <div class="w-ic"><i class="fas fa-shipping-fast"></i></div>
-          <h4>تسليم سريع</h4>
-          <p>بنية لوجستية متطورة تضمن التسليم في المواعيد المحددة دون تأخير.</p>
+          <h4 data-i18n="why_card3_title">تسليم سريع</h4>
+          <p data-i18n="why_card3_desc">بنية لوجستية متطورة تضمن التسليم في المواعيد المحددة دون تأخير.</p>
         </div>
         <div class="w-card" data-aos="zoom-in" data-aos-delay="400">
           <div class="w-ic"><i class="fas fa-handshake"></i></div>
-          <h4>شراكة موثوقة</h4>
-          <p>علاقات طويلة الأمد مع عملاء وشركاء في أكثر من 50 دولة حول العالم.</p>
+          <h4 data-i18n="why_card4_title">شراكة موثوقة</h4>
+          <p data-i18n="why_card4_desc">علاقات طويلة الأمد مع عملاء وشركاء في أكثر من 30 دولة حول العالم.</p>
         </div>
       </div>
     </div>
@@ -1374,23 +1520,23 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="certs-inner">
       <div class="cert-item" data-aos="fade-up" data-aos-delay="0">
         <div class="cert-ic"><i class="fas fa-certificate"></i></div>
-        <div class="cert-txt"><strong>ISO 9001</strong><span>إدارة الجودة</span></div>
+        <div class="cert-txt"><strong data-i18n="cert1_name">ISO 9001</strong><span data-i18n="cert1_desc">إدارة الجودة</span></div>
       </div>
       <div class="cert-item" data-aos="fade-up" data-aos-delay="80">
         <div class="cert-ic"><i class="fas fa-shield-alt"></i></div>
-        <div class="cert-txt"><strong>ISO 22000</strong><span>سلامة الغذاء</span></div>
+        <div class="cert-txt"><strong data-i18n="cert2_name">ISO 22000</strong><span data-i18n="cert2_desc">سلامة الغذاء</span></div>
       </div>
       <div class="cert-item" data-aos="fade-up" data-aos-delay="160">
         <div class="cert-ic"><i class="fas fa-leaf"></i></div>
-        <div class="cert-txt"><strong>الغذاء الحلال</strong><span>معيار دولي</span></div>
+        <div class="cert-txt"><strong data-i18n="cert3_name">الغذاء الحلال</strong><span data-i18n="cert3_desc">معيار دولي</span></div>
       </div>
       <div class="cert-item" data-aos="fade-up" data-aos-delay="240">
         <div class="cert-ic"><i class="fas fa-microscope"></i></div>
-        <div class="cert-txt"><strong>HACCP</strong><span>تحليل المخاطر</span></div>
+        <div class="cert-txt"><strong data-i18n="cert4_name">HACCP</strong><span data-i18n="cert4_desc">تحليل المخاطر</span></div>
       </div>
       <div class="cert-item" data-aos="fade-up" data-aos-delay="320">
         <div class="cert-ic"><i class="fas fa-globe"></i></div>
-        <div class="cert-txt"><strong>معايير التصدير</strong><span>اعتماد دولي</span></div>
+        <div class="cert-txt"><strong data-i18n="cert5_name">معايير التصدير</strong><span data-i18n="cert5_desc">اعتماد دولي</span></div>
       </div>
     </div>
   </div>
@@ -1401,55 +1547,67 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="container">
     <div class="contact-grid">
       <div class="contact-left" data-aos="fade-right" data-aos-duration="900">
-        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> تواصل معنا</div>
-        <h2 class="sec-title">نحن هنا<br/><span class="hi">لخدمتكم</span></h2>
-        <p class="sec-body">هل لديك استفسار أو طلب خاص؟ فريقنا المتخصص مستعد للرد على جميع استفساراتكم في أسرع وقت.</p>
+        <div class="sec-tag"><i class="fas fa-circle-dot" style="font-size:.6rem"></i> <span data-i18n="contact_tag">تواصل معنا</span></div>
+        <h2 class="sec-title"><span data-i18n="contact_title_1">نحن هنا</span><br/><span class="hi" data-i18n="contact_title_2">لخدمتكم</span></h2>
+        <p class="sec-body" data-i18n="contact_subtitle">هل لديك استفسار أو طلب خاص؟ فريقنا المتخصص مستعد للرد على جميع استفساراتكم في أسرع وقت.</p>
         <div class="c-info-cards">
           <div class="c-info">
             <div class="c-ic"><i class="fas fa-map-marker-alt"></i></div>
-            <div><h5>العنوان الرسمي</h5><p>الإمارات العربية المتحدة، دبي<br/>النهدة 1، برج صهيل، مكتب 503</p></div>
+            <div><h5 data-i18n="contact_addr_lbl">العنوان الرسمي</h5><p data-i18n="contact_addr_val">الإمارات العربية المتحدة، دبي<br/>النهدة 1، برج صهيل، مكتب 503</p></div>
           </div>
           <div class="c-info">
             <div class="c-ic"><i class="fas fa-phone-alt"></i></div>
-            <div><h5>الإمارات — UAE</h5><p dir="ltr">+971 58 698 2905</p></div>
+            <div><h5 data-i18n="contact_uae_lbl">الإمارات — UAE</h5><p dir="ltr">+971 58 698 2905</p></div>
           </div>
           <div class="c-info">
             <div class="c-ic"><i class="fas fa-phone-alt"></i></div>
-            <div><h5>مصر — Egypt</h5><p dir="ltr">+20 100 571 2255</p></div>
+            <div><h5 data-i18n="contact_eg_lbl">مصر — Egypt</h5><p dir="ltr">+20 100 571 2255</p></div>
           </div>
           <div class="c-info">
             <div class="c-ic p"><i class="fab fa-whatsapp"></i></div>
-            <div><h5>واتساب</h5><p dir="ltr">+971 58 698 2905</p></div>
+            <div><h5 data-i18n="contact_wa_lbl">واتساب</h5><p dir="ltr">+971 58 698 2905</p></div>
           </div>
           <div class="c-info">
             <div class="c-ic"><i class="fas fa-envelope"></i></div>
-            <div><h5>البريد الإلكتروني</h5><p>nawara102000@gmail.com</p></div>
+            <div><h5 data-i18n="contact_email_lbl">البريد الإلكتروني</h5><p>nawara102000@gmail.com</p></div>
           </div>
         </div>
       </div>
       <div class="contact-form" data-aos="fade-left" data-aos-duration="900">
-        <h3>أرسل رسالتك</h3>
+        <h3 data-i18n="form_title">أرسل رسالتك</h3>
         <form id="cForm" onsubmit="submitForm(event)">
           <div class="f-row">
-            <div class="f-grp"><label>الاسم الكامل</label><input type="text" placeholder="أدخل اسمك" required/></div>
-            <div class="f-grp"><label>رقم الهاتف</label><input type="tel" placeholder="+971 58 698 2905" required/></div>
+            <div class="f-grp">
+              <label data-i18n="form_name_lbl">الاسم الكامل</label>
+              <input type="text" data-i18n-ph="form_name_ph" placeholder="أدخل اسمك" required/>
+            </div>
+            <div class="f-grp">
+              <label data-i18n="form_phone_lbl">رقم الهاتف</label>
+              <input type="tel" placeholder="+971 58 698 2905" required/>
+            </div>
           </div>
-          <div class="f-grp"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com" required/></div>
           <div class="f-grp">
-            <label>الخدمة المطلوبة</label>
-            <select>
-              <option value="">اختر الخدمة...</option>
-              <option>الخضر والفواكه الطازجة</option>
-              <option>السلع الغذائية المعبأة</option>
-              <option>الاستيراد والتصدير</option>
-              <option>التخزين المبرد</option>
-              <option>شراكة تجارية</option>
-              <option>أخرى</option>
+            <label data-i18n="form_email_lbl">البريد الإلكتروني</label>
+            <input type="email" placeholder="example@email.com" required/>
+          </div>
+          <div class="f-grp">
+            <label data-i18n="form_service_lbl">الخدمة المطلوبة</label>
+            <select id="serviceSelect">
+              <option value="" data-i18n="form_opt_default">اختر الخدمة...</option>
+              <option value="produce" data-i18n="form_opt_1">الخضر والفواكه الطازجة</option>
+              <option value="packaged" data-i18n="form_opt_2">السلع الغذائية المعبأة</option>
+              <option value="shipping" data-i18n="form_opt_3">الاستيراد والتصدير</option>
+              <option value="storage" data-i18n="form_opt_4">التخزين المبرد</option>
+              <option value="partnership" data-i18n="form_opt_5">شراكة تجارية</option>
+              <option value="other" data-i18n="form_opt_6">أخرى</option>
             </select>
           </div>
-          <div class="f-grp"><label>رسالتك</label><textarea placeholder="اكتب تفاصيل طلبك هنا..." required></textarea></div>
+          <div class="f-grp">
+            <label data-i18n="form_msg_lbl">رسالتك</label>
+            <textarea data-i18n-ph="form_msg_ph" placeholder="اكتب تفاصيل طلبك هنا..." required></textarea>
+          </div>
           <button type="submit" class="f-submit" id="fBtn">
-            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+            <i class="fas fa-paper-plane"></i> <span data-i18n="form_submit_btn">إرسال الرسالة</span>
           </button>
         </form>
       </div>
@@ -1463,7 +1621,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="ft-grid">
       <div class="ft-brand">
         <img src="img primary/logo.jpg" alt="نوارة"/>
-        <p>شركة نوارة للاستيراد والتصدير وتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة — رائدة في قطاعها بالجودة والالتزام والخبرة الوافية عبر مصر والإمارات وأسواق العالم.</p>
+        <p data-i18n="ft_desc">شركة نوارة للاستيراد والتصدير وتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة — رائدة في قطاعها بالجودة والالتزام والخبرة الوافية عبر مصر والإمارات وأسواق العالم.</p>
         <div class="ft-social">
           <a href="https://www.facebook.com/NawaraEGP?locale=ar_AR" target="_blank" rel="noopener" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/nawara102000" target="_blank" rel="noopener" title="إنستغرام"><i class="fab fa-instagram"></i></a>
@@ -1472,49 +1630,411 @@ footer{background:var(--dark);padding:80px 0 0}
         </div>
       </div>
       <div class="ft-col">
-        <h4>روابط سريعة</h4>
+        <h4 data-i18n="ft_quick_links">روابط سريعة</h4>
         <div class="ft-links">
-          <a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a>
-          <a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a>
-          <a href="#process"><i class="fas fa-chevron-left"></i> كيف نعمل</a>
-          <a href="#gallery"><i class="fas fa-chevron-left"></i> معرضنا</a>
-          <a href="#why"><i class="fas fa-chevron-left"></i> لماذا نوارة</a>
+          <a href="#about"><i class="fas fa-chevron-left"></i> <span data-i18n="nav_about">من نحن</span></a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="nav_services">خدماتنا</span></a>
+          <a href="#process"><i class="fas fa-chevron-left"></i> <span data-i18n="nav_process">كيف نعمل</span></a>
+          <a href="#gallery"><i class="fas fa-chevron-left"></i> <span data-i18n="nav_gallery">معرضنا</span></a>
+          <a href="#why"><i class="fas fa-chevron-left"></i> <span data-i18n="nav_why">لماذا نوارة</span></a>
         </div>
       </div>
       <div class="ft-col">
-        <h4>خدماتنا</h4>
+        <h4 data-i18n="ft_services_title">خدماتنا</h4>
         <div class="ft-links">
-          <a href="#services"><i class="fas fa-chevron-left"></i> الخضر والفواكه</a>
-          <a href="#services"><i class="fas fa-chevron-left"></i> السلع المعبأة</a>
-          <a href="#services"><i class="fas fa-chevron-left"></i> الاستيراد والتصدير</a>
-          <a href="#services"><i class="fas fa-chevron-left"></i> التخزين المبرد</a>
-          <a href="#services"><i class="fas fa-chevron-left"></i> ضمان الجودة</a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="srv1_title">الخضر والفواكه</span></a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="srv2_title">السلع المعبأة</span></a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="srv3_title">الاستيراد والتصدير</span></a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="srv4_title">التخزين المبرد</span></a>
+          <a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="srv5_title">ضمان الجودة</span></a>
         </div>
       </div>
       <div class="ft-col">
-        <h4>تواصل معنا</h4>
+        <h4 data-i18n="ft_contact_title">تواصل معنا</h4>
         <div class="ft-links">
-          <a href="tel:+971586982905"><i class="fas fa-phone-alt"></i> +971 58 698 2905 (الإمارات)</a>
-          <a href="tel:+201005712255"><i class="fas fa-phone-alt"></i> +20 100 571 2255 (مصر)</a>
+          <a href="tel:+971586982905"><i class="fas fa-phone-alt"></i> <span data-i18n="ft_uae_phone">+971 58 698 2905 (الإمارات)</span></a>
+          <a href="tel:+201005712255"><i class="fas fa-phone-alt"></i> <span data-i18n="ft_eg_phone">+20 100 571 2255 (مصر)</span></a>
           <a href="mailto:nawara102000@gmail.com"><i class="fas fa-envelope"></i> nawara102000@gmail.com</a>
-          <a href="https://wa.me/971586982905" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
-          <span style="color:rgba(255,255,255,.75);font-size:.84rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;margin-top:8px"><i class="fas fa-map-marker-alt" style="margin-top:4px;color:var(--p2)"></i> الإمارات، دبي، النهدة 1، برج صهيل، مكتب 503</span>
+          <a href="https://wa.me/971586982905" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="ft_wa_label">واتساب</span></a>
+          <span style="color:rgba(255,255,255,.75);font-size:.84rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;margin-top:8px">
+            <i class="fas fa-map-marker-alt" style="margin-top:4px;color:var(--p2)"></i>
+            <span data-i18n="ft_address_text">الإمارات، دبي، النهدة 1، برج صهيل، مكتب 503</span>
+          </span>
         </div>
       </div>
     </div>
     <div class="ft-bottom">
-      <p>© 2026 جميع الحقوق محفوظة — <span>شركة نوارة للاستيراد والتصدير</span></p>
+      <p><span data-i18n="ft_copy">© 2026 جميع الحقوق محفوظة — </span><span data-i18n="ft_company">شركة نوارة للاستيراد والتصدير</span></p>
     </div>
   </div>
 </footer>
 
 <!-- Floating buttons -->
-<button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
-<div class="wa-btn"><a href="https://wa.me/971586982905" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a></div>
+<button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="للأعلى"><i class="fas fa-arrow-up"></i></button>
+<div class="wa-btn"><a href="https://wa.me/971586982905" target="_blank" rel="noopener" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a></div>
 
 <!-- ======================== SCRIPTS ======================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
+/* ============================================================
+   BILINGUAL I18N SYSTEM
+============================================================ */
+const i18n = {
+  ar: {
+    page_title: "نوارة | للاستيراد والتصدير والتجارة الغذائية",
+    lang_btn: "EN",
+    nav_about: "من نحن",
+    nav_services: "خدماتنا",
+    nav_process: "كيف نعمل",
+    nav_gallery: "معرضنا",
+    nav_video: "الفيديو",
+    nav_why: "لماذا نوارة",
+    nav_contact: "تواصل معنا",
+
+    hero_eyebrow: "رائدة في استيراد وتصدير السلع الغذائية",
+    hero_subtitle: "Nawara Business Company",
+    hero_title_1: "جسر الخير",
+    hero_title_2: "لكل دول العالم",
+    hero_desc: "جودة منتقاة وخبرة ممتدة والتزام بالمعايير العالمية في الخضر والفواكه والسلع الغذائية — نوارة شريكك التجاري الأول.",
+    hero_btn_explore: "اكتشف نوارة",
+    hero_btn_video: "شاهد الفيديو",
+    hero_card1_title: "جودة معتمدة دولياً",
+    hero_card1_desc: "شهادات ISO وأعلى معايير سلامة الغذاء",
+    hero_card2_title: "انتشار في 50+ دولة",
+    hero_card2_desc: "شبكة تصدير تغطي أسواق أوروبا وآسيا وأفريقيا",
+    hero_card3_title: "تسليم سريع ومضمون",
+    hero_card3_desc: "لوجستيات متطورة تضمن الوصول في الوقت المحدد",
+
+    stat_exp: "سنوات خبرة",
+    stat_countries: "دولة مصدّر إليها",
+    stat_clients: "عميل موثوق",
+    stat_quality: "التزام بالجودة",
+
+    about_badge: "عاماً من التميز",
+    about_tag: "من نحن",
+    about_title_1: "رائدون في قطاع",
+    about_title_2: "السلع الغذائية العالمية",
+    about_body: "نحن في شركة نوارة لتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة نفخر بمسيرة طويلة وراسخة من التمرس والخبرة العميقة في هذا المجال الحيوي. نتميز بجودتنا العالية، واستجابتنا السريعة لكافة الاحتياجات، مستندين إلى خبرات استثنائية تمتد وتتكامل عبر أسواق إقليمية وعالمية رئيسية، وعلى رأسها جمهورية مصر العربية ودولة الإمارات العربية المتحدة.",
+    about_feat1_title: "جودة معتمدة دولياً",
+    about_feat1_desc: "نلتزم في شركة نوارة بتقديم منتجات تخضع لأقسى معايير الجودة العالمية وسلامة الغذاء. حيث تحظى منشآتنا ومنتجاتنا باعتماد شهادات الأيزو (ISO) العالمية، مما يضمن أن كل ثمرة، سلعة، أو صنف معلّب يصل إلى عملائنا عبر القارات قد مرّ بأرقى منظومات الرقابة والاختبار.",
+    about_feat2_title: "استجابة سريعة وتسليم موثوق",
+    about_feat2_desc: "أسسنا شبكة لوجستية متكاملة وعالية الكفاءة تربط بين خطوط الإمداد في مصر والإمارات وكافة محطات التصدير العالمية. نضمن لعملائنا استجابة فورية، ومرونة تامة في تلبية الطلبيات، وإدارة دقيقة لسلاسل التوريد تكفل وصول السلع في المواعيد المحددة وبأعلى معايير الحفظ والسلامة.",
+    about_feat3_title: "شبكة تصدير عالمية",
+    about_feat3_desc: "نمتلك شبكة تصدير عالمية واسعة وراسخة، حيث نصدّر منتجاتنا المتميزة إلى أكثر من 30 دولة حول العالم بالتعاون مع نخبة من الشركاء الاستراتيجيين الموثوقين، لنكون الخيار الأول والمفضل للتجارة الدولية الموثوقة.",
+
+    services_tag: "خدماتنا",
+    services_title: "ما نقدمه لعملائنا",
+    services_subtitle: "منظومة متكاملة من الخدمات في استيراد وتصدير السلع الغذائية والخضر والفواكه على مستوى عالمي.",
+    srv_arrow: "اكتشف أكثر",
+    srv1_title: "الخضر والفواكه الطازجة",
+    srv1_desc: "توريد أفضل أنواع الخضراوات والفواكه الطازجة المنتقاة بعناية من أجود المزارع العالمية.",
+    srv2_title: "السلع الغذائية المعبأة",
+    srv2_desc: "مجموعة متنوعة من المواد الغذائية المعبأة والمعالجة وفق أعلى معايير الجودة والسلامة.",
+    srv3_title: "الاستيراد والتصدير",
+    srv3_desc: "حلول لوجستية متكاملة للاستيراد والتصدير إلى جميع دول العالم بكفاءة وسرعة عالية.",
+    srv4_title: "التخزين المبرد",
+    srv4_desc: "منظومة تخزين مبردة حديثة تضمن الحفاظ على جودة المنتجات وطزاجتها حتى لحظة التسليم.",
+    srv5_title: "ضمان الجودة والفحص",
+    srv5_desc: "فحص دقيق لجميع المنتجات للتأكد من مطابقتها للمعايير الدولية لسلامة الغذاء والصحة.",
+    srv6_title: "الشراكات التجارية",
+    srv6_desc: "بناء شراكات استراتيجية طويلة الأمد مع الموردين والموزعين في مختلف أنحاء العالم.",
+
+    process_tag: "كيف نعمل",
+    process_title: "مسيرتنا في خدمتكم",
+    process_subtitle: "من الانتقاء الدقيق للمنتجات وحتى التسليم في وجهتكم — كل خطوة محكمة بمعاييرنا العالية.",
+    step1_title: "الانتقاء والفرز",
+    step1_desc: "نختار أجود المنتجات مباشرةً من المصادر والمزارع المعتمدة حول العالم.",
+    step2_title: "فحص الجودة",
+    step2_desc: "مختبرات متخصصة تضمن مطابقة كل منتج لمعايير السلامة الغذائية الدولية.",
+    step3_title: "التعبئة والتغليف",
+    step3_desc: "تغليف احترافي يحافظ على الجودة والطزاجة طوال رحلة الشحن والتخزين.",
+    step4_title: "الشحن والتسليم",
+    step4_desc: "شبكة شحن عالمية مبردة تضمن وصول منتجاتكم طازجة وفي الموعد المحدد.",
+
+    gallery_tag: "معرضنا",
+    gallery_title: "لمحات من عالمنا",
+    gallery_subtitle: "استعرض صور منتجاتنا وعملياتنا اللوجستية والفريق المتخصص في شركة نوارة.",
+
+    video_tag: "الفيديو التعريفي",
+    video_title: "شاهد قصة نوارة",
+    video_subtitle: "اكتشف كيف تعمل نوارة على توصيل أجود المنتجات الغذائية إلى أسواق العالم بأعلى معايير الجودة والاحترافية.",
+    video_label: "شاهد الفيديو التعريفي",
+
+    why_tag: "مزايانا",
+    why_title_1: "لماذا تختار",
+    why_title_2: "نوارة؟",
+    why_subtitle: "نقدم أكثر من مجرد منتجات — نقدم ثقة مبنية على الجودة والالتزام والخبرة الممتدة لأكثر من 10 سنوات.",
+    why_check1: "منتجات معتمدة بشهادات ISO دولية",
+    why_check2: "خبرة تزيد عن 10 أعوام في القطاع",
+    why_check3: "شبكة توزيع تغطي أكثر من 30 دولة",
+    why_check4: "فريق متخصص واستجابة سريعة للاحتياجات",
+    why_check5: "أسعار تنافسية وحلول مخصصة لكل عميل",
+    why_check6: "التزام بمعايير سلامة الغذاء العالمية",
+    why_card1_title: "انتشار عالمي",
+    why_card1_desc: "نشاط في أسواق العالم من أوروبا إلى آسيا وأفريقيا والشرق الأوسط.",
+    why_card2_title: "جودة لا تُضاهى",
+    why_card2_desc: "أعلى معايير الانتقاء والجودة في كل منتج نقدمه لعملائنا.",
+    why_card3_title: "تسليم سريع",
+    why_card3_desc: "بنية لوجستية متطورة تضمن التسليم في المواعيد المحددة دون تأخير.",
+    why_card4_title: "شراكة موثوقة",
+    why_card4_desc: "علاقات طويلة الأمد مع عملاء وشركاء في أكثر من 30 دولة حول العالم.",
+
+    cert1_name: "ISO 9001",
+    cert1_desc: "إدارة الجودة",
+    cert2_name: "ISO 22000",
+    cert2_desc: "سلامة الغذاء",
+    cert3_name: "الغذاء الحلال",
+    cert3_desc: "معيار دولي",
+    cert4_name: "HACCP",
+    cert4_desc: "تحليل المخاطر",
+    cert5_name: "معايير التصدير",
+    cert5_desc: "اعتماد دولي",
+
+    contact_tag: "تواصل معنا",
+    contact_title_1: "نحن هنا",
+    contact_title_2: "لخدمتكم",
+    contact_subtitle: "هل لديك استفسار أو طلب خاص؟ فريقنا المتخصص مستعد للرد على جميع استفساراتكم في أسرع وقت.",
+    contact_addr_lbl: "العنوان الرسمي",
+    contact_addr_val: "الإمارات العربية المتحدة، دبي<br/>النهدة 1، برج صهيل، مكتب 503",
+    contact_uae_lbl: "الإمارات — UAE",
+    contact_eg_lbl: "مصر — Egypt",
+    contact_wa_lbl: "واتساب",
+    contact_email_lbl: "البريد الإلكتروني",
+    form_title: "أرسل رسالتك",
+    form_name_lbl: "الاسم الكامل",
+    form_name_ph: "أدخل اسمك",
+    form_phone_lbl: "رقم الهاتف",
+    form_email_lbl: "البريد الإلكتروني",
+    form_service_lbl: "الخدمة المطلوبة",
+    form_opt_default: "اختر الخدمة...",
+    form_opt_1: "الخضر والفواكه الطازجة",
+    form_opt_2: "السلع الغذائية المعبأة",
+    form_opt_3: "الاستيراد والتصدير",
+    form_opt_4: "التخزين المبرد",
+    form_opt_5: "شراكة تجارية",
+    form_opt_6: "أخرى",
+    form_msg_lbl: "رسالتك",
+    form_msg_ph: "اكتب تفاصيل طلبك هنا...",
+    form_submit_btn: "إرسال الرسالة",
+    form_submit_success: "تم الإرسال بنجاح!",
+
+    ft_desc: "شركة نوارة للاستيراد والتصدير وتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة — رائدة في قطاعها بالجودة والالتزام والخبرة الوافية عبر مصر والإمارات وأسواق العالم.",
+    ft_quick_links: "روابط سريعة",
+    ft_services_title: "خدماتنا",
+    ft_contact_title: "تواصل معنا",
+    ft_uae_phone: "+971 58 698 2905 (الإمارات)",
+    ft_eg_phone: "+20 100 571 2255 (مصر)",
+    ft_wa_label: "واتساب",
+    ft_address_text: "الإمارات، دبي، النهدة 1، برج صهيل، مكتب 503",
+    ft_copy: "© 2026 جميع الحقوق محفوظة — ",
+    ft_company: "شركة نوارة للاستيراد والتصدير"
+  },
+  en: {
+    page_title: "Nawara | Import, Export & Food Commodities Trading",
+    lang_btn: "عربي",
+    nav_about: "About Us",
+    nav_services: "Services",
+    nav_process: "How We Work",
+    nav_gallery: "Gallery",
+    nav_video: "Video",
+    nav_why: "Why Us",
+    nav_contact: "Contact Us",
+
+    hero_eyebrow: "Leader in Food Commodities Import & Export",
+    hero_subtitle: "Nawara Business Company",
+    hero_title_1: "Bridge of Prosperity",
+    hero_title_2: "Connecting Global Markets",
+    hero_desc: "Selected quality, extensive expertise, and adherence to international standards in fresh produce and food commodities — Nawara is your premier global trade partner.",
+    hero_btn_explore: "Discover Nawara",
+    hero_btn_video: "Watch Video",
+    hero_card1_title: "Internationally Certified",
+    hero_card1_desc: "ISO certifications & top food safety standards",
+    hero_card2_title: "Active in 50+ Countries",
+    hero_card2_desc: "Export network covering Europe, Asia, & Africa",
+    hero_card3_title: "Fast & Reliable Delivery",
+    hero_card3_desc: "Modern logistics ensuring on-time fulfillment",
+
+    stat_exp: "Years of Experience",
+    stat_countries: "Export Destinations",
+    stat_clients: "Trusted Clients",
+    stat_quality: "Quality Commitment",
+
+    about_badge: "Years of Excellence",
+    about_tag: "About Us",
+    about_title_1: "Leaders in the",
+    about_title_2: "Global Food Sector",
+    about_body: "At Nawara Food Commodities, Fresh Produce, and Canned Goods Trading, we take pride in our deep-rooted expertise and enduring track record in this vital sector. We distinguish ourselves through superior quality, rapid responsiveness, and cross-border capabilities spanning Egypt, the UAE, and key global trade routes.",
+    about_feat1_title: "Internationally Certified Quality",
+    about_feat1_desc: "We adhere strictly to international quality and food safety standards. Our facilities and products hold global ISO certifications, ensuring that every crop, commodity, or packaged item delivered worldwide has undergone rigorous inspection systems.",
+    about_feat2_title: "Fast Response & Reliable Delivery",
+    about_feat2_desc: "We operate an integrated, high-efficiency logistics network linking major supply chains in Egypt, the UAE, and global ports. We guarantee rapid responsiveness, complete order flexibility, and strict cold-chain management.",
+    about_feat3_title: "Worldwide Export Network",
+    about_feat3_desc: "Our export network reaches over 30 countries globally in cooperation with trusted strategic partners, making Nawara the preferred choice for reliable international trade.",
+
+    services_tag: "Our Services",
+    services_title: "What We Offer to Our Clients",
+    services_subtitle: "An integrated suite of solutions in importing and exporting premium food commodities, fruits, and vegetables worldwide.",
+    srv_arrow: "Learn More",
+    srv1_title: "Fresh Fruits & Vegetables",
+    srv1_desc: "Supplying handpicked, premium-grade fresh vegetables and fruits sourced from the finest agricultural producers.",
+    srv2_title: "Packaged Food Commodities",
+    srv2_desc: "A wide variety of packaged and processed food goods prepared under the highest hygiene and quality benchmarks.",
+    srv3_title: "Import & Export",
+    srv3_desc: "Comprehensive logistics solutions for international trade across all continents with supreme speed and efficiency.",
+    srv4_title: "Cold Storage Logistics",
+    srv4_desc: "Advanced temperature-controlled refrigeration systems preserving produce freshness from harvest to delivery.",
+    srv5_title: "Quality Assurance & Testing",
+    srv5_desc: "Thorough laboratory inspection ensuring all shipments comply with international food safety and health protocols.",
+    srv6_title: "Trade Partnerships",
+    srv6_desc: "Cultivating sustainable, long-term strategic alliances with suppliers and distributors across world markets.",
+
+    process_tag: "How We Work",
+    process_title: "Our Process in Serving You",
+    process_subtitle: "From meticulous harvesting and selection to final destination arrival — every single phase meets our gold standards.",
+    step1_title: "Selection & Sourcing",
+    step1_desc: "We handpick top-grade agricultural produce directly from certified global farms.",
+    step2_title: "Quality Inspection",
+    step2_desc: "Specialized laboratories verify each batch against strict international safety guidelines.",
+    step3_title: "Packaging & Crating",
+    step3_desc: "Custom protective packaging engineered to retain peak freshness during long transit times.",
+    step4_title: "Global Shipping & Delivery",
+    step4_desc: "Refrigerated intermodal transport ensuring products arrive fresh and right on schedule.",
+
+    gallery_tag: "Our Gallery",
+    gallery_title: "Glimpses from Our World",
+    gallery_subtitle: "Explore our products, advanced logistics operations, and the dedicated team driving Nawara forward.",
+
+    video_tag: "Corporate Video",
+    video_title: "Watch the Nawara Story",
+    video_subtitle: "Discover how Nawara delivers the finest food commodities to international markets with exceptional excellence.",
+    video_label: "Watch Corporate Video",
+
+    why_tag: "Why Us",
+    why_title_1: "Why Choose",
+    why_title_2: "Nawara?",
+    why_subtitle: "We deliver more than just agricultural goods — we provide dependable trust backed by over 10 years of seasoned experience.",
+    why_check1: "Certified with global ISO accreditations",
+    why_check2: "Over 10+ years of proven industry mastery",
+    why_check3: "Export network covering 30+ countries",
+    why_check4: "Dedicated team with agile response times",
+    why_check5: "Competitive prices & customized client solutions",
+    why_check6: "Full adherence to global food safety benchmarks",
+    why_card1_title: "Global Footprint",
+    why_card1_desc: "Operations across Europe, Asia, Africa, and the Middle East.",
+    why_card2_title: "Unmatched Quality",
+    why_card2_desc: "Highest standards of sourcing and inspection in every shipment.",
+    why_card3_title: "Prompt Delivery",
+    why_card3_desc: "Advanced infrastructure guaranteeing seamless fulfillment on time.",
+    why_card4_title: "Trusted Partnership",
+    why_card4_desc: "Longstanding alliances with partners in 30+ countries worldwide.",
+
+    cert1_name: "ISO 9001",
+    cert1_desc: "Quality Management",
+    cert2_name: "ISO 22000",
+    cert2_desc: "Food Safety",
+    cert3_name: "Halal Certified",
+    cert3_desc: "International Standard",
+    cert4_name: "HACCP",
+    cert4_desc: "Hazard Analysis",
+    cert5_name: "Export Standards",
+    cert5_desc: "Global Accreditation",
+
+    contact_tag: "Contact Us",
+    contact_title_1: "We Are Here",
+    contact_title_2: "To Serve You",
+    contact_subtitle: "Do you have an inquiry, custom order, or partnership request? Our expert team is ready to assist you promptly.",
+    contact_addr_lbl: "Official Address",
+    contact_addr_val: "UAE, Dubai<br/>Al Nahda 1, Saheel Tower, Office 503",
+    contact_uae_lbl: "UAE Office",
+    contact_eg_lbl: "Egypt Office",
+    contact_wa_lbl: "WhatsApp",
+    contact_email_lbl: "Email Address",
+    form_title: "Send Us a Message",
+    form_name_lbl: "Full Name",
+    form_name_ph: "Enter your full name",
+    form_phone_lbl: "Phone Number",
+    form_email_lbl: "Email Address",
+    form_service_lbl: "Requested Service",
+    form_opt_default: "Select a service...",
+    form_opt_1: "Fresh Fruits & Vegetables",
+    form_opt_2: "Packaged Food Commodities",
+    form_opt_3: "Import & Export",
+    form_opt_4: "Cold Storage Logistics",
+    form_opt_5: "Trade Partnership",
+    form_opt_6: "Other",
+    form_msg_lbl: "Your Message",
+    form_msg_ph: "Write your inquiry or order details here...",
+    form_submit_btn: "Send Message",
+    form_submit_success: "Sent Successfully!",
+
+    ft_desc: "Nawara Import & Export and Food Trading Company — leading the sector with quality, dedication, and extensive cross-border expertise across Egypt, UAE, and international markets.",
+    ft_quick_links: "Quick Links",
+    ft_services_title: "Our Services",
+    ft_contact_title: "Contact Us",
+    ft_uae_phone: "+971 58 698 2905 (UAE)",
+    ft_eg_phone: "+20 100 571 2255 (Egypt)",
+    ft_wa_label: "WhatsApp",
+    ft_address_text: "UAE, Dubai, Al Nahda 1, Saheel Tower, Office 503",
+    ft_copy: "© 2026 All Rights Reserved — ",
+    ft_company: "Nawara Import & Export Co."
+  }
+};
+
+let currentLang = localStorage.getItem('nawara_lang') || 'ar';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('nawara_lang', lang);
+
+  const html = document.documentElement;
+  html.lang = lang;
+  html.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+  const t = i18n[lang] || i18n.ar;
+
+  // Update all [data-i18n]
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (t[key].includes('<br') || t[key].includes('<span')) {
+        el.innerHTML = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+
+  // Update page title
+  if (t.page_title) {
+    document.title = t.page_title;
+  }
+
+  // Update placeholders [data-i18n-ph]
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key]) {
+      el.placeholder = t[key];
+    }
+  });
+
+  // Update language button text
+  const labelEl = document.getElementById('langLabel');
+  if (labelEl) {
+    labelEl.textContent = t.lang_btn;
+  }
+
+  // Re-render gallery filters and captions
+  updateGalleryLanguage(lang);
+
+  // Re-render ticker in selected language
+  renderTicker(lang);
+}
+
+function toggleLang() {
+  const next = (currentLang === 'ar') ? 'en' : 'ar';
+  applyLang(next);
+}
+
 /* ------- AOS ------- */
 AOS.init({once:true,offset:70,duration:800,easing:'ease-out-cubic'});
 
@@ -1585,20 +2105,25 @@ timer=setInterval(()=>goSlide((cur+1)%slides.length),6000);
 
 /* ------- Ticker ------- */
 const tickItems=[
-  {icon:'fa-seedling',text:'خضر وفواكه طازجة'},
-  {icon:'fa-ship',text:'شحن دولي موثوق'},
-  {icon:'fa-medal',text:'جودة معتمدة ISO'},
-  {icon:'fa-globe-americas',text:'50+ دولة'},
-  {icon:'fa-snowflake',text:'تخزين مبرد حديث'},
-  {icon:'fa-handshake',text:'شراكات استراتيجية'},
-  {icon:'fa-certificate',text:'معايير عالمية'},
-  {icon:'fa-truck-fast',text:'تسليم سريع'},
+  {icon:'fa-seedling',ar:'خضر وفواكه طازجة',en:'Fresh Fruits & Vegetables'},
+  {icon:'fa-ship',ar:'شحن دولي موثوق',en:'Reliable International Shipping'},
+  {icon:'fa-medal',ar:'جودة معتمدة ISO',en:'ISO Certified Quality'},
+  {icon:'fa-globe-americas',ar:'30+ دولة',en:'30+ Export Destinations'},
+  {icon:'fa-snowflake',ar:'تخزين مبرد حديث',en:'Modern Cold Storage'},
+  {icon:'fa-handshake',ar:'شراكات استراتيجية',en:'Strategic Partnerships'},
+  {icon:'fa-certificate',ar:'معايير عالمية',en:'Global Standards'},
+  {icon:'fa-truck-fast',ar:'تسليم سريع',en:'Fast & Secure Delivery'},
 ];
-const track=document.getElementById('tickerTrack');
-const double=[...tickItems,...tickItems];
-double.forEach((item,i)=>{
-  track.innerHTML+=`<span class="ticker-item"><i class="fas ${item.icon}"></i>${item.text}</span>${i<double.length-1?'<span class="ticker-sep">◆</span>':''}`;
-});
+function renderTicker(lang) {
+  const track=document.getElementById('tickerTrack');
+  if(!track) return;
+  track.innerHTML = '';
+  const double=[...tickItems,...tickItems];
+  double.forEach((item,i)=>{
+    const text = (lang === 'en') ? item.en : item.ar;
+    track.innerHTML+=`<span class="ticker-item"><i class="fas ${item.icon}"></i>${text}</span>${i<double.length-1?'<span class="ticker-sep">◆</span>':''}`;
+  });
+}
 
 /* ------- Counter Animation ------- */
 function animCounter(el){
@@ -1620,99 +2145,96 @@ const counterObs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.stat-num').forEach(el=>counterObs.observe(el));
 
 /* ------- Gallery ------- */
-/*
-  فئات المعرض — مرتبة بشكل احترافي:
-  1. خضر وفواكه طازجة
-  2. موانئ وشحن
-  3. تخزين مبرد
-  4. تعبئة وتغليف
-  5. فريق العمل والشراكات
-  6. فحص الجودة
-*/
 const galleryData = [
   /* ── خضر وفواكه ── */
-  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010232219.jpg',  label: 'خضر طازجة',          cat: 'produce', layout: 'wide tall' },
-  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010234137.jpg',  label: 'خضر في صناديق',      cat: 'produce', layout: '' },
-  { src: 'img sec/Fruit_arrangement_in_cartons_20261010232201.jpg',       label: 'فواكه للتصدير',      cat: 'produce', layout: '' },
-  { src: 'img sec/Crate_of_fresh_produce_20261010233006.jpg',             label: 'منتجات طازجة',       cat: 'produce', layout: '' },
-  { src: 'img sec/Fresh_fruit_in_export_cartons_20261008164241.jpg',      label: 'فاكهة في كراتين',    cat: 'produce', layout: 'wide' },
+  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010232219.jpg',  labelAr: 'خضر طازجة',       labelEn: 'Fresh Vegetables',      cat: 'produce', layout: 'wide tall' },
+  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010234137.jpg',  labelAr: 'خضر في صناديق',   labelEn: 'Crated Produce',        cat: 'produce', layout: '' },
+  { src: 'img sec/Fruit_arrangement_in_cartons_20261010232201.jpg',       labelAr: 'فواكه للتصدير',   labelEn: 'Export Fruits',         cat: 'produce', layout: '' },
+  { src: 'img sec/Crate_of_fresh_produce_20261010233006.jpg',             labelAr: 'منتجات طازجة',    labelEn: 'Fresh Harvest',         cat: 'produce', layout: '' },
+  { src: 'img sec/Fresh_fruit_in_export_cartons_20261008164241.jpg',      labelAr: 'فاكهة في كراتين', labelEn: 'Carton Packed Fruit',   cat: 'produce', layout: 'wide' },
 
   /* ── موانئ وشحن ── */
-  { src: 'img sec/Containers_loaded_at_export_port_20261008164014.jpg',   label: 'ميناء التصدير',      cat: 'shipping', layout: 'wide tall' },
-  { src: 'img sec/Containers_loaded_at_port_20261010232057.jpg',          label: 'تحميل الحاويات',     cat: 'shipping', layout: '' },
-  { src: 'img sec/Loading_containers_at_modern_port_20261010232236.jpg',  label: 'ميناء حديث',         cat: 'shipping', layout: '' },
-  { src: 'img sec/World_map_with_route_lines_20261010232650.jpg',         label: 'خطوط الشحن العالمية', cat: 'shipping', layout: 'wide' },
-  { src: 'img sec/Produce_export_port_at_sunset_20261010234059.jpg',      label: 'غروب الميناء',       cat: 'shipping', layout: '' },
+  { src: 'img sec/Containers_loaded_at_export_port_20261008164014.jpg',   labelAr: 'ميناء التصدير',   labelEn: 'Export Port Terminal',  cat: 'shipping', layout: 'wide tall' },
+  { src: 'img sec/Containers_loaded_at_port_20261010232057.jpg',          labelAr: 'تحميل الحاويات',  labelEn: 'Container Loading',     cat: 'shipping', layout: '' },
+  { src: 'img sec/Loading_containers_at_modern_port_20261010232236.jpg',  labelAr: 'ميناء حديث',      labelEn: 'Modern Port Operations',cat: 'shipping', layout: '' },
+  { src: 'img sec/World_map_with_route_lines_20261010232650.jpg',         labelAr: 'خطوط الشحن العالمية', labelEn: 'Global Trade Routes',cat: 'shipping', layout: 'wide' },
+  { src: 'img sec/Produce_export_port_at_sunset_20261010234059.jpg',      labelAr: 'غروب الميناء',    labelEn: 'Harbor at Sunset',      cat: 'shipping', layout: '' },
 
   /* ── رافعات وتحميل ── */
-  { src: 'img sec/Forklift_loading_refrigerated_tr_20261010232615.jpg',   label: 'شاحنة مبردة',        cat: 'logistics', layout: 'wide' },
-  { src: 'img sec/Packaged_fruits_in_export_cartons_20261010234154.jpg',  label: 'فواكه معبأة',        cat: 'logistics', layout: '' },
-  { src: 'img sec/Team_packing_fruits_into_cartons_20261010232528.jpg',   label: 'تعبئة وتغليف',       cat: 'logistics', layout: '' },
-  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232120.jpg',     label: 'رفوف البضائع',       cat: 'logistics', layout: '' },
-  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232141.jpg',     label: 'مستودع البضائع',     cat: 'logistics', layout: '' },
+  { src: 'img sec/Forklift_loading_refrigerated_tr_20261010232615.jpg',   labelAr: 'شاحنة مبردة',     labelEn: 'Refrigerated Fleet',    cat: 'logistics', layout: 'wide' },
+  { src: 'img sec/Packaged_fruits_in_export_cartons_20261010234154.jpg',  labelAr: 'فواكه معبأة',     labelEn: 'Packaged Fresh Fruit',  cat: 'logistics', layout: '' },
+  { src: 'img sec/Team_packing_fruits_into_cartons_20261010232528.jpg',   labelAr: 'تعبئة وتغليف',    labelEn: 'Packing Operations',    cat: 'logistics', layout: '' },
+  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232120.jpg',     labelAr: 'رفوف البضائع',    labelEn: 'Warehouse Shelving',    cat: 'logistics', layout: '' },
+  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232141.jpg',     labelAr: 'مستودع البضائع',  labelEn: 'Goods Storage Hub',     cat: 'logistics', layout: '' },
 
   /* ── تخزين مبرد ── */
-  { src: 'img sec/Workers_in_cold_storage_facility_20261010232419.jpg',   label: 'تخزين مبرد',         cat: 'storage', layout: 'wide tall' },
+  { src: 'img sec/Workers_in_cold_storage_facility_20261010232419.jpg',   labelAr: 'تخزين مبرد',      labelEn: 'Cold Storage Facility', cat: 'storage', layout: 'wide tall' },
 
   /* ── فحص الجودة ── */
-  { src: 'img sec/Inspector_examining_tomatoes_in_lab_20261010232449.jpg', label: 'فحص الجودة',        cat: 'quality', layout: '' },
-  { src: 'img sec/Workers_inspecting_produce_in_fa_20261010234210.jpg',   label: 'مراقبة الإنتاج',     cat: 'quality', layout: '' },
-  { src: 'img sec/Workers_packing_produce_in_facility_20261010234415.jpg', label: 'تغليف المنتجات',    cat: 'quality', layout: 'wide' },
+  { src: 'img sec/Inspector_examining_tomatoes_in_lab_20261010232449.jpg', labelAr: 'فحص الجودة',     labelEn: 'Lab Quality Inspection',cat: 'quality', layout: '' },
+  { src: 'img sec/Workers_inspecting_produce_in_fa_20261010234210.jpg',   labelAr: 'مراقبة الإنتاج',  labelEn: 'Production Monitoring', cat: 'quality', layout: '' },
+  { src: 'img sec/Workers_packing_produce_in_facility_20261010234415.jpg', labelAr: 'تغليف المنتجات', labelEn: 'Produce Packaging',    cat: 'quality', layout: 'wide' },
 
   /* ── فريق العمل ── */
-  { src: 'img sec/Business_team_in_modern_office_20261010232724.jpg',     label: 'فريق العمل',         cat: 'team', layout: 'wide' },
-  { src: 'img sec/Business_team_in_modern_office_20261010234445.jpg',     label: 'اجتماع الفريق',      cat: 'team', layout: '' },
-  { src: 'img sec/Handshake_over_produce_and_docum_20261010232909.jpg',   label: 'شراكات تجارية',      cat: 'team', layout: '' },
-  { src: 'img sec/Business_professionals_shaking_h_20261010234523.jpg',   label: 'اتفاقيات الأعمال',   cat: 'team', layout: '' },
+  { src: 'img sec/Business_team_in_modern_office_20261010232724.jpg',     labelAr: 'فريق العمل',      labelEn: 'Corporate Team',        cat: 'team', layout: 'wide' },
+  { src: 'img sec/Business_team_in_modern_office_20261010234445.jpg',     labelAr: 'اجتماع الفريق',   labelEn: 'Executive Meeting',     cat: 'team', layout: '' },
+  { src: 'img sec/Handshake_over_produce_and_docum_20261010232909.jpg',   labelAr: 'شراكات تجارية',   labelEn: 'Strategic Agreement',   cat: 'team', layout: '' },
+  { src: 'img sec/Business_professionals_shaking_h_20261010234523.jpg',   labelAr: 'اتفاقيات الأعمال',labelEn: 'Business Partnership',  cat: 'team', layout: '' },
+
   /* ── منتجات سورينا (Sorina) — شحن حقيقي ── */
-  { src: 'img sec/Sorina Products/501749445_1236442424539794_8238062879901315250_n.jpg', label: 'شحن منتجات سورينا',    cat: 'sorina', layout: 'wide' },
-  { src: 'img sec/Sorina Products/521316008_1277653383752031_5456526229099842269_n.jpg', label: 'رافعة تحميل البضائع',  cat: 'sorina', layout: '' },
-  { src: 'img sec/Sorina Products/522646477_1277653470418689_4184590602565646772_n.jpg', label: 'تحميل الحاوية',         cat: 'sorina', layout: '' },
-  { src: 'img sec/Sorina Products/558780426_1376282313889137_341886614746940967_n.jpg',  label: 'شاحنة محملة',          cat: 'sorina', layout: '' },
-  { src: 'img sec/Sorina Products/649741846_4414397932110003_7982137179359326828_n.jpg', label: 'أصناف غذائية',         cat: 'sorina', layout: '' },
-  { src: 'img sec/Sorina Products/652584724_1473133654204002_2501680910597628655_n.jpg', label: 'فريق الشحن',           cat: 'sorina', layout: 'wide' },
+  { src: 'img sec/Sorina Products/501749445_1236442424539794_8238062879901315250_n.jpg', labelAr: 'شحن منتجات سورينا',   labelEn: 'Sorina Shipping',      cat: 'sorina', layout: 'wide' },
+  { src: 'img sec/Sorina Products/521316008_1277653383752031_5456526229099842269_n.jpg', labelAr: 'رافعة تحميل البضائع', labelEn: 'Cargo Forklift',       cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/522646477_1277653470418689_4184590602565646772_n.jpg', labelAr: 'تحميل الحاوية',        labelEn: 'Container Packing',    cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/558780426_1376282313889137_341886614746940967_n.jpg',  labelAr: 'شاحنة محملة',         labelEn: 'Loaded Transport',     cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/649741846_4414397932110003_7982137179359326828_n.jpg', labelAr: 'أصناف غذائية',        labelEn: 'Food Assortment',      cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/652584724_1473133654204002_2501680910597628655_n.jpg', labelAr: 'فريق الشحن',          labelEn: 'Logistics Dispatch',   cat: 'sorina', layout: 'wide' },
 
   /* ── كتالوج Surena ── */
-  { src: 'img sec/Surena Product Catalog/Create a pre.png',    label: 'كتالوج المنتجات',         cat: 'catalog', layout: 'wide tall' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-1.png',  label: 'زيتون أخضر محشي جزر',    cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-2.png',  label: 'منتجات سورينا',            cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-3.png',  label: 'مجموعة المنتجات 3',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-4.png',  label: 'مجموعة المنتجات 4',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-5.png',  label: 'مجموعة المنتجات 5',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-6.png',  label: 'مجموعة المنتجات 6',        cat: 'catalog', layout: 'wide' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-7.png',  label: 'مجموعة المنتجات 7',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-8.png',  label: 'مجموعة المنتجات 8',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-9.png',  label: 'مجموعة المنتجات 9',        cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-10.png', label: 'مجموعة المنتجات 10',       cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-11.png', label: 'مجموعة المنتجات 11',       cat: 'catalog', layout: 'wide' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-12.png', label: 'مجموعة المنتجات 12',       cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-13.png', label: 'مجموعة المنتجات 13',       cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-14.png', label: 'مجموعة المنتجات 14',       cat: 'catalog', layout: '' },
-  { src: 'img sec/Surena Product Catalog/Create a pre-15.png', label: 'مجموعة المنتجات 15',       cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre.png',    labelAr: 'كتالوج المنتجات',        labelEn: 'Product Catalog',       cat: 'catalog', layout: 'wide tall' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-1.png',  labelAr: 'زيتون أخضر محشي جزر',   labelEn: 'Stuffed Green Olives',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-2.png',  labelAr: 'منتجات سورينا',           labelEn: 'Sorina Specialties',    cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-3.png',  labelAr: 'مجموعة المنتجات 3',       labelEn: 'Product Collection 3',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-4.png',  labelAr: 'مجموعة المنتجات 4',       labelEn: 'Product Collection 4',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-5.png',  labelAr: 'مجموعة المنتجات 5',       labelEn: 'Product Collection 5',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-6.png',  labelAr: 'مجموعة المنتجات 6',       labelEn: 'Product Collection 6',  cat: 'catalog', layout: 'wide' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-7.png',  labelAr: 'مجموعة المنتجات 7',       labelEn: 'Product Collection 7',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-8.png',  labelAr: 'مجموعة المنتجات 8',       labelEn: 'Product Collection 8',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-9.png',  labelAr: 'مجموعة المنتجات 9',       labelEn: 'Product Collection 9',  cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-10.png', labelAr: 'مجموعة المنتجات 10',      labelEn: 'Product Collection 10', cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-11.png', labelAr: 'مجموعة المنتجات 11',      labelEn: 'Product Collection 11', cat: 'catalog', layout: 'wide' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-12.png', labelAr: 'مجموعة المنتجات 12',      labelEn: 'Product Collection 12', cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-13.png', labelAr: 'مجموعة المنتجات 13',      labelEn: 'Product Collection 13', cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-14.png', labelAr: 'مجموعة المنتجات 14',      labelEn: 'Product Collection 14', cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-15.png', labelAr: 'مجموعة المنتجات 15',      labelEn: 'Product Collection 15', cat: 'catalog', layout: '' },
 ];
 
-/* --- filter buttons --- */
+/* --- filter categories --- */
 const filterCats = [
-  { key: 'all',      label: 'الكل' },
-  { key: 'produce',  label: 'خضر وفواكه' },
-  { key: 'shipping', label: 'شحن وموانئ' },
-  { key: 'logistics',label: 'لوجستيات' },
-  { key: 'storage',  label: 'تخزين مبرد' },
-  { key: 'quality',  label: 'جودة وفحص' },
-  { key: 'team',     label: 'فريق العمل' },
-  { key: 'sorina',   label: 'منتجات سورينا' },
-  { key: 'catalog',  label: 'كتالوج المنتجات' },
+  { key: 'all',      ar: 'الكل',             en: 'All' },
+  { key: 'produce',  ar: 'خضر وفواكه',       en: 'Produce' },
+  { key: 'shipping', ar: 'شحن وموانئ',       en: 'Shipping & Ports' },
+  { key: 'logistics',ar: 'لوجستيات',         en: 'Logistics' },
+  { key: 'storage',  ar: 'تخزين مبرد',       en: 'Cold Storage' },
+  { key: 'quality',  ar: 'جودة وفحص',        en: 'Quality & Testing' },
+  { key: 'team',     ar: 'فريق العمل',       en: 'Our Team' },
+  { key: 'sorina',   ar: 'منتجات سورينا',    en: 'Sorina Products' },
+  { key: 'catalog',  ar: 'كتالوج المنتجات',   en: 'Product Catalog' },
 ];
+
 const filterBar = document.createElement('div');
 filterBar.className = 'gal-filters';
+filterBar.id = 'galFilterBar';
+let currentCategory = 'all';
+
 filterCats.forEach(f => {
   const btn = document.createElement('button');
   btn.className = 'gal-btn' + (f.key === 'all' ? ' active' : '');
-  btn.textContent = f.label;
+  btn.textContent = (currentLang === 'en') ? f.en : f.ar;
   btn.dataset.cat = f.key;
   btn.addEventListener('click', () => {
     document.querySelectorAll('.gal-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    currentCategory = f.key;
     filterGallery(f.key);
   });
   filterBar.appendChild(btn);
@@ -1725,18 +2247,44 @@ galleryData.forEach((item, i) => {
   const div = document.createElement('div');
   div.className = 'g-item ' + item.layout;
   div.dataset.cat = item.cat;
+  div.dataset.index = i;
   div.setAttribute('data-aos', 'fade-up');
   div.setAttribute('data-aos-delay', ((i % 4) * 60).toString());
+  const initialLabel = (currentLang === 'en') ? item.labelEn : item.labelAr;
   div.innerHTML = `
-    <img src="${item.src}" alt="${item.label}" loading="lazy"
+    <img src="${item.src}" alt="${initialLabel}" loading="lazy"
          onerror="this.closest('.g-item').style.display='none'"/>
     <div class="g-cap">
       <div class="g-cap-icon"><i class="fas fa-expand"></i></div>
-      <p style="color:#fff;font-size:.82rem;font-weight:600;margin-top:auto">${item.label}</p>
+      <p class="g-cap-txt" style="color:#fff;font-size:.82rem;font-weight:600;margin-top:auto">${initialLabel}</p>
     </div>`;
   div.addEventListener('click', () => openLB(i));
   grid.appendChild(div);
 });
+
+function updateGalleryLanguage(lang) {
+  // Update filter buttons
+  document.querySelectorAll('#galFilterBar .gal-btn').forEach(btn => {
+    const key = btn.dataset.cat;
+    const catObj = filterCats.find(c => c.key === key);
+    if (catObj) {
+      btn.textContent = (lang === 'en') ? catObj.en : catObj.ar;
+    }
+  });
+
+  // Update gallery cards
+  document.querySelectorAll('.g-item').forEach(card => {
+    const idx = parseInt(card.dataset.index, 10);
+    const item = galleryData[idx];
+    if (item) {
+      const lbl = (lang === 'en') ? item.labelEn : item.labelAr;
+      const txtEl = card.querySelector('.g-cap-txt');
+      if (txtEl) txtEl.textContent = lbl;
+      const imgEl = card.querySelector('img');
+      if (imgEl) imgEl.alt = lbl;
+    }
+  });
+}
 
 /* --- filter logic --- */
 function filterGallery(cat) {
@@ -1766,8 +2314,8 @@ document.getElementById('vmodal').addEventListener('click',function(e){if(e.targ
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){closeLB();closeVid()}
   if(document.getElementById('lb').classList.contains('on')){
-    if(e.key==='ArrowLeft')lbNav(1);
-    if(e.key==='ArrowRight')lbNav(-1);
+    if(e.key==='ArrowLeft')lbNav(document.documentElement.dir==='ltr'?-1:1);
+    if(e.key==='ArrowRight')lbNav(document.documentElement.dir==='ltr'?1:-1);
   }
 });
 
@@ -1775,14 +2323,18 @@ document.addEventListener('keydown',e=>{
 function submitForm(e){
   e.preventDefault();
   const btn=document.getElementById('fBtn');
-  btn.innerHTML='<i class="fas fa-check-circle"></i> تم الإرسال بنجاح!';
+  const t = i18n[currentLang] || i18n.ar;
+  btn.innerHTML=`<i class="fas fa-check-circle"></i> <span>${t.form_submit_success}</span>`;
   btn.classList.add('success');
   setTimeout(()=>{
-    btn.innerHTML='<i class="fas fa-paper-plane"></i> إرسال الرسالة';
+    btn.innerHTML=`<i class="fas fa-paper-plane"></i> <span>${t.form_submit_btn}</span>`;
     btn.classList.remove('success');
     document.getElementById('cForm').reset();
   },3500);
 }
+
+// Initialize saved or default language on startup
+applyLang(currentLang);
 </script>
 </body>
 </html>
