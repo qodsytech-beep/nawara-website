@@ -604,6 +604,30 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
   align-self:flex-end;
 }
 
+/* Gallery Filter Buttons */
+.gal-filters{
+  display:flex;flex-wrap:wrap;gap:10px;
+  justify-content:center;
+  margin-bottom:40px;
+}
+.gal-btn{
+  padding:9px 22px;
+  border-radius:50px;
+  background:transparent;
+  border:1.5px solid var(--g3);
+  color:var(--g3);
+  font-family:'Cairo',sans-serif;
+  font-size:.88rem;font-weight:600;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.gal-btn:hover,.gal-btn.active{
+  background:var(--g3);
+  color:#fff;
+  box-shadow:0 4px 16px rgba(46,107,68,.3);
+  transform:translateY(-2px);
+}
+
 /* Lightbox */
 #lb{
   display:none;position:fixed;inset:0;
@@ -1635,6 +1659,31 @@ const galleryData = [
   { src: 'img sec/Business_team_in_modern_office_20261010234445.jpg',     label: 'اجتماع الفريق',      cat: 'team', layout: '' },
   { src: 'img sec/Handshake_over_produce_and_docum._20261010232909.jpg',  label: 'شراكات تجارية',      cat: 'team', layout: '' },
   { src: 'img sec/Business_professionals_shaking_h._20261010234523.jpg',  label: 'اتفاقيات الأعمال',   cat: 'team', layout: '' },
+  /* ── منتجات سورينا (Sorina) — شحن حقيقي ── */
+  { src: 'img sec/Sorina Products/501749445_1236442424539794_8238062879901315250_n.jpg', label: 'شحن منتجات سورينا',    cat: 'sorina', layout: 'wide' },
+  { src: 'img sec/Sorina Products/521316008_1277653383752031_5456526229099842269_n.jpg', label: 'رافعة تحميل البضائع',  cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/522646477_1277653470418689_4184590602565646772_n.jpg', label: 'تحميل الحاوية',         cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/558780426_1376282313889137_341886614746940967_n.jpg',  label: 'شاحنة محملة',          cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/649741846_4414397932110003_7982137179359326828_n.jpg', label: 'أصناف غذائية',         cat: 'sorina', layout: '' },
+  { src: 'img sec/Sorina Products/652584724_1473133654204002_2501680910597628655_n.jpg', label: 'فريق الشحن',           cat: 'sorina', layout: 'wide' },
+
+  /* ── كتالوج Surena ── */
+  { src: 'img sec/Surena Product Catalog/Create a pre.png',    label: 'كتالوج المنتجات',         cat: 'catalog', layout: 'wide tall' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-1.png',  label: 'زيتون أخضر محشي جزر',    cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-2.png',  label: 'منتجات سورينا',            cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-3.png',  label: 'مجموعة المنتجات 3',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-4.png',  label: 'مجموعة المنتجات 4',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-5.png',  label: 'مجموعة المنتجات 5',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-6.png',  label: 'مجموعة المنتجات 6',        cat: 'catalog', layout: 'wide' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-7.png',  label: 'مجموعة المنتجات 7',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-8.png',  label: 'مجموعة المنتجات 8',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-9.png',  label: 'مجموعة المنتجات 9',        cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-10.png', label: 'مجموعة المنتجات 10',       cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-11.png', label: 'مجموعة المنتجات 11',       cat: 'catalog', layout: 'wide' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-12.png', label: 'مجموعة المنتجات 12',       cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-13.png', label: 'مجموعة المنتجات 13',       cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-14.png', label: 'مجموعة المنتجات 14',       cat: 'catalog', layout: '' },
+  { src: 'img sec/Surena Product Catalog/Create a pre-15.png', label: 'مجموعة المنتجات 15',       cat: 'catalog', layout: '' },
 ];
 
 /* --- filter buttons --- */
@@ -1646,6 +1695,8 @@ const filterCats = [
   { key: 'storage',  label: 'تخزين مبرد' },
   { key: 'quality',  label: 'جودة وفحص' },
   { key: 'team',     label: 'فريق العمل' },
+  { key: 'sorina',   label: 'منتجات سورينا' },
+  { key: 'catalog',  label: 'كتالوج المنتجات' },
 ];
 const filterBar = document.createElement('div');
 filterBar.className = 'gal-filters';
