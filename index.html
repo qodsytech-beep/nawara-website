@@ -1591,63 +1591,115 @@ const counterObs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.stat-num').forEach(el=>counterObs.observe(el));
 
 /* ------- Gallery ------- */
-const imgs=[
-  'imgs sub/472038291_122192628548169124_4390531787627687345_n.jpg',
-  'imgs sub/472064389_122192629070169124_8214756420233721156_n.jpg',
-  'imgs sub/472284027_122192628584169124_7292682889609652635_n.jpg',
-  'imgs sub/472350172_122192629322169124_106350286069766277_n.jpg',
-  'imgs sub/472486345_122192629040169124_4952025500993267484_n.jpg',
-  'imgs sub/558780426_1376282313889137_341886614746940967_n.jpg',
-  'imgs sub/561426586_1345340110316691_3617507688316285897_n.jpg',
-  'imgs sub/561874875_1345340230316679_346658512236795251_n.jpg',
-  'imgs sub/571797084_1359479578902744_6990817354283532681_n.jpg',
-  'imgs sub/572266102_1359479705569398_3243105378568562580_n.jpg',
-  'imgs sub/573366142_1359479665569402_6477450301548668893_n.jpg',
-  'imgs sub/574460990_1359479738902728_7014645236900651379_n.jpg',
-  'imgs sub/574509151_1359479635569405_591408640093377178_n.jpg',
-  'imgs sub/577006013_1368807087969993_6311127644971258282_n.jpg',
-  'imgs sub/577889786_1368807144636654_203192765406535258_n.jpg',
-  'imgs sub/582838859_1376282353889133_8472355578467018001_n.jpg',
-  'imgs sub/583227280_1376282287222473_6670884839867279284_n.jpg',
-  'imgs sub/584253627_1376282230555812_7521607242545625090_n.jpg',
-  'imgs sub/597483496_1422676302583071_3514893395979379529_n.jpg',
-  'imgs sub/615820284_1422676319249736_153028561573352498_n.jpg',
-  'imgs sub/615823010_1422676212583080_7613419650313957158_n.jpg',
-  'imgs sub/616466496_1422676379249730_1127350750941568117_n.jpg',
-  'imgs sub/616855669_1422676245916410_3953652011542436269_n.jpg',
-  'imgs sub/651048797_1473132810870753_6476310604693467632_n.jpg',
-  'imgs sub/651907471_1473133360870698_7887556755728670448_n.jpg',
-  'imgs sub/652346894_1473133400870694_2422634247949299813_n.jpg',
-  'imgs sub/653391215_1473133254204042_7168582567863088931_n.jpg',
-  'imgs sub/700430874_1528108112039889_5052323775499944015_n.jpg',
-  'imgs sub/700799949_1528107908706576_686336683762199589_n.jpg',
-  'imgs sub/701030907_1528108045373229_5033216970392838353_n.jpg',
-  'imgs sub/702176661_1528107662039934_2295620263819631330_n.jpg',
-  'imgs sub/702564416_1528107595373274_845530790586218431_n.jpg',
-  'imgs sub/795132427_1631896668327699_2587525458320842227_n.jpg',
-  'imgs sub/798263703_1631896928327673_4535506463976923182_n.jpg',
-  'imgs sub/799225904_1631896821661017_8477386841049511770_n.jpg',
-  'imgs sub/799458953_1631896741661025_977888865421942745_n.jpg',
+/*
+  فئات المعرض — مرتبة بشكل احترافي:
+  1. خضر وفواكه طازجة
+  2. موانئ وشحن
+  3. تخزين مبرد
+  4. تعبئة وتغليف
+  5. فريق العمل والشراكات
+  6. فحص الجودة
+*/
+const galleryData = [
+  /* ── خضر وفواكه ── */
+  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010232219.jpg',  label: 'خضر طازجة',          cat: 'produce', layout: 'wide tall' },
+  { src: 'img sec/Fresh_vegetables_in_wooden_crates_20261010234137.jpg',  label: 'خضر في صناديق',      cat: 'produce', layout: '' },
+  { src: 'img sec/Fruit_arrangement_in_cartons_20261010232201.jpg',       label: 'فواكه للتصدير',      cat: 'produce', layout: '' },
+  { src: 'img sec/Crate_of_fresh_produce_20261010233006.jpg',             label: 'منتجات طازجة',       cat: 'produce', layout: '' },
+  { src: 'img sec/Fresh_fruit_in_export_cartons_20261008164241.jpg',      label: 'فاكهة في كراتين',    cat: 'produce', layout: 'wide' },
+
+  /* ── موانئ وشحن ── */
+  { src: 'img sec/Containers_loaded_at_export_port_20261008164014.jpg',   label: 'ميناء التصدير',      cat: 'shipping', layout: 'wide tall' },
+  { src: 'img sec/Containers_loaded_at_port_20261010232057.jpg',          label: 'تحميل الحاويات',     cat: 'shipping', layout: '' },
+  { src: 'img sec/Loading_containers_at_modern_port_20261010232236.jpg',  label: 'ميناء حديث',         cat: 'shipping', layout: '' },
+  { src: 'img sec/World_map_with_route_lines_20261010232650.jpg',         label: 'خطوط الشحن العالمية', cat: 'shipping', layout: 'wide' },
+  { src: 'img sec/Produce_export_port_at_sunset_20261010234059.jpg',      label: 'غروب الميناء',       cat: 'shipping', layout: '' },
+
+  /* ── رافعات وتحميل ── */
+  { src: 'img sec/Forklift_loading_refrigerated_tr._20261010232615.jpg',  label: 'شاحنة مبردة',        cat: 'logistics', layout: 'wide' },
+  { src: 'img sec/Packaged_fruits_in_export_cartons_20261010234154.jpg',  label: 'فواكه معبأة',        cat: 'logistics', layout: '' },
+  { src: 'img sec/Team_packing_fruits_into_cartons_20261010232528.jpg',   label: 'تعبئة وتغليف',       cat: 'logistics', layout: '' },
+  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232120.jpg',     label: 'رفوف البضائع',       cat: 'logistics', layout: '' },
+  { src: 'img sec/Shelves_of_packaged_food_goods_20261010232141.jpg',     label: 'مستودع البضائع',     cat: 'logistics', layout: '' },
+
+  /* ── تخزين مبرد ── */
+  { src: 'img sec/Workers_in_cold_storage_facility_20261010232419.jpg',   label: 'تخزين مبرد',         cat: 'storage', layout: 'wide tall' },
+
+  /* ── فحص الجودة ── */
+  { src: 'img sec/Inspector_examining_tomatoes_in_lab_20261010232449.jpg', label: 'فحص الجودة',        cat: 'quality', layout: '' },
+  { src: 'img sec/Workers_inspecting_produce_in_fa._20261010234210.jpg',  label: 'مراقبة الإنتاج',     cat: 'quality', layout: '' },
+  { src: 'img sec/Workers_packing_produce_in_facility_20261010234415.jpg', label: 'تغليف المنتجات',    cat: 'quality', layout: 'wide' },
+
+  /* ── فريق العمل ── */
+  { src: 'img sec/Business_team_in_modern_office_20261010232724.jpg',     label: 'فريق العمل',         cat: 'team', layout: 'wide' },
+  { src: 'img sec/Business_team_in_modern_office_20261010234445.jpg',     label: 'اجتماع الفريق',      cat: 'team', layout: '' },
+  { src: 'img sec/Handshake_over_produce_and_docum._20261010232909.jpg',  label: 'شراكات تجارية',      cat: 'team', layout: '' },
+  { src: 'img sec/Business_professionals_shaking_h._20261010234523.jpg',  label: 'اتفاقيات الأعمال',   cat: 'team', layout: '' },
 ];
-const layouts=['wide tall','','wide','','','','tall','','wide',''];
-const grid=document.getElementById('galGrid');
-imgs.slice(0,10).forEach((src,i)=>{
-  const cls=layouts[i]||'';
-  const div=document.createElement('div');
-  div.className='g-item '+cls;
-  div.setAttribute('data-aos','fade-up');
-  div.setAttribute('data-aos-delay',((i%4)*70).toString());
-  div.innerHTML=`<img src="${src}" alt="نوارة ${i+1}" loading="lazy" onerror="this.closest('.g-item').style.display='none'"/>
-    <div class="g-cap"><div class="g-cap-icon"><i class="fas fa-expand"></i></div></div>`;
-  div.addEventListener('click',()=>openLB(i));
+
+/* --- filter buttons --- */
+const filterCats = [
+  { key: 'all',      label: 'الكل' },
+  { key: 'produce',  label: 'خضر وفواكه' },
+  { key: 'shipping', label: 'شحن وموانئ' },
+  { key: 'logistics',label: 'لوجستيات' },
+  { key: 'storage',  label: 'تخزين مبرد' },
+  { key: 'quality',  label: 'جودة وفحص' },
+  { key: 'team',     label: 'فريق العمل' },
+];
+const filterBar = document.createElement('div');
+filterBar.className = 'gal-filters';
+filterCats.forEach(f => {
+  const btn = document.createElement('button');
+  btn.className = 'gal-btn' + (f.key === 'all' ? ' active' : '');
+  btn.textContent = f.label;
+  btn.dataset.cat = f.key;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.gal-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterGallery(f.key);
+  });
+  filterBar.appendChild(btn);
+});
+document.getElementById('galGrid').before(filterBar);
+
+/* --- build cards --- */
+const grid = document.getElementById('galGrid');
+galleryData.forEach((item, i) => {
+  const div = document.createElement('div');
+  div.className = 'g-item ' + item.layout;
+  div.dataset.cat = item.cat;
+  div.setAttribute('data-aos', 'fade-up');
+  div.setAttribute('data-aos-delay', ((i % 4) * 60).toString());
+  div.innerHTML = `
+    <img src="${item.src}" alt="${item.label}" loading="lazy"
+         onerror="this.closest('.g-item').style.display='none'"/>
+    <div class="g-cap">
+      <div class="g-cap-icon"><i class="fas fa-expand"></i></div>
+      <p style="color:#fff;font-size:.82rem;font-weight:600;margin-top:auto">${item.label}</p>
+    </div>`;
+  div.addEventListener('click', () => openLB(i));
   grid.appendChild(div);
 });
 
-let lbIdx=0;
-function openLB(i){lbIdx=i;document.getElementById('lb-img').src=imgs[i];document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
-function closeLB(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
-function lbNav(d){lbIdx=(lbIdx+d+imgs.length)%imgs.length;document.getElementById('lb-img').src=imgs[lbIdx]}
-document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLB()});
+/* --- filter logic --- */
+function filterGallery(cat) {
+  document.querySelectorAll('.g-item').forEach(el => {
+    if (cat === 'all' || el.dataset.cat === cat) {
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
+/* --- lightbox uses galleryData --- */
+const imgs = galleryData.map(d => d.src);
+let lbIdx = 0;
+function openLB(i){ lbIdx=i; document.getElementById('lb-img').src=imgs[i]; document.getElementById('lb').classList.add('on'); document.body.style.overflow='hidden'; }
+function closeLB(){ document.getElementById('lb').classList.remove('on'); document.body.style.overflow=''; }
+function lbNav(d){ lbIdx=(lbIdx+d+imgs.length)%imgs.length; document.getElementById('lb-img').src=imgs[lbIdx]; }
+document.getElementById('lb').addEventListener('click',function(e){ if(e.target===this) closeLB(); });
 
 /* ------- Video ------- */
 function openVid(){document.getElementById('vmodal').classList.add('on');document.getElementById('mainVid').play();document.body.style.overflow='hidden'}
