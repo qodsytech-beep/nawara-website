@@ -225,7 +225,8 @@ section { overflow: hidden; }
   text-transform:uppercase;margin-bottom:28px;
   backdrop-filter:blur(8px);
 }
-.hero-eyebrow span{width:6px;height:6px;background:var(--p2);border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
+.hero-eyebrow .eb-dot{width:6px;height:6px;background:var(--p2);border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
+.hero-eyebrow .eb-text{color:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-transform:inherit}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero-h1{
@@ -613,6 +614,11 @@ section { overflow: hidden; }
 .g-item{
   position:relative;overflow:hidden;border-radius:20px;
   cursor:pointer;
+  animation:galFadeIn .35s ease both;
+}
+@keyframes galFadeIn{
+  from{opacity:0;transform:scale(0.96)}
+  to{opacity:1;transform:scale(1)}
 }
 .g-item.wide{grid-column:span 2}
 .g-item.tall{grid-row:span 2}
@@ -1199,8 +1205,8 @@ html[dir="ltr"] .mob-menu li a:hover {
   <div class="hero-inner">
     <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
       <div class="hero-eyebrow">
-        <span></span>
-        <span data-i18n="hero_eyebrow">رائدة في استيراد وتصدير السلع الغذائية</span>
+        <span class="eb-dot"></span>
+        <span class="eb-text" data-i18n="hero_eyebrow">رائدة في استيراد وتصدير السلع الغذائية</span>
       </div>
       <p class="hero-sub-title" data-i18n="hero_subtitle">Nawara Business Company</p>
       <h1 class="hero-h1">
@@ -2248,11 +2254,9 @@ galleryData.forEach((item, i) => {
   div.className = 'g-item ' + item.layout;
   div.dataset.cat = item.cat;
   div.dataset.index = i;
-  div.setAttribute('data-aos', 'fade-up');
-  div.setAttribute('data-aos-delay', ((i % 4) * 60).toString());
   const initialLabel = (currentLang === 'en') ? item.labelEn : item.labelAr;
   div.innerHTML = `
-    <img src="${item.src}" alt="${initialLabel}" loading="lazy"
+    <img src="${item.src}" alt="${initialLabel}"
          onerror="this.closest('.g-item').style.display='none'"/>
     <div class="g-cap">
       <div class="g-cap-icon"><i class="fas fa-expand"></i></div>
@@ -2288,9 +2292,14 @@ function updateGalleryLanguage(lang) {
 
 /* --- filter logic --- */
 function filterGallery(cat) {
+  let count = 0;
   document.querySelectorAll('.g-item').forEach(el => {
     if (cat === 'all' || el.dataset.cat === cat) {
       el.style.display = '';
+      el.style.animation = 'none';
+      void el.offsetWidth; // trigger reflow
+      el.style.animation = `galFadeIn 0.35s ease ${Math.min(count * 0.025, 0.25)}s both`;
+      count++;
     } else {
       el.style.display = 'none';
     }
