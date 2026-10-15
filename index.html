@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+<link rel="stylesheet" href="nawara-theme.css"/>
 
 <style>
 /* ============================================================
@@ -614,11 +615,6 @@ section { overflow: hidden; }
 .g-item{
   position:relative;overflow:hidden;border-radius:20px;
   cursor:pointer;
-  animation:galFadeIn .35s ease both;
-}
-@keyframes galFadeIn{
-  from{opacity:0;transform:scale(0.96)}
-  to{opacity:1;transform:scale(1)}
 }
 .g-item.wide{grid-column:span 2}
 .g-item.tall{grid-row:span 2}
@@ -1195,10 +1191,10 @@ html[dir="ltr"] .mob-menu li a:hover {
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-slides" id="heroSlides">
-    <div class="h-slide on"><img src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt=""/></div>
-    <div class="h-slide"><img src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt=""/></div>
-    <div class="h-slide"><img src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt=""/></div>
-    <div class="h-slide"><img src="img primary/774476404_122278112942169124_2044847658479338186_n.jpg" alt=""/></div>
+    <div class="h-slide on"><img src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt="" fetchpriority="high" decoding="async"/></div>
+    <div class="h-slide"><img data-src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt="" loading="lazy" decoding="async" class="lazy-img"/></div>
+    <div class="h-slide"><img data-src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt="" loading="lazy" decoding="async" class="lazy-img"/></div>
+    <div class="h-slide"><img data-src="img primary/774476404_122278112942169124_2044847658479338186_n.jpg" alt="" loading="lazy" decoding="async" class="lazy-img"/></div>
   </div>
   <div class="hero-overlay"></div>
 
@@ -1282,7 +1278,7 @@ html[dir="ltr"] .mob-menu li a:hover {
       <span class="stat-lbl" data-i18n="stat_exp">سنوات خبرة</span>
     </div>
     <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-      <span class="stat-num" data-target="30" data-suffix="+">0</span>
+      <span class="stat-num" data-target="50" data-suffix="+">0</span>
       <span class="stat-lbl" data-i18n="stat_countries">دولة مصدّر إليها</span>
     </div>
     <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
@@ -1301,8 +1297,8 @@ html[dir="ltr"] .mob-menu li a:hover {
   <div class="container">
     <div class="about-grid">
       <div class="about-imgs" data-aos="fade-left" data-aos-duration="900">
-        <img class="a-img-1" src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt=""/>
-        <img class="a-img-2" src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt=""/>
+        <img class="a-img-1 lazy-img" src="img primary/815159274_122282393996169124_1112263488798870150_n.jpg" alt="" loading="lazy" decoding="async"/>
+        <img class="a-img-2 lazy-img" src="img primary/825267071_122283359690169124_3958177922564081229_n.jpg" alt="" loading="lazy" decoding="async"/>
         <div class="a-badge">
           <strong>+10</strong>
           <span data-i18n="about_badge">عاماً من التميز</span>
@@ -1460,7 +1456,7 @@ html[dir="ltr"] .mob-menu li a:hover {
     <h2 class="sec-title" data-i18n="video_title">شاهد قصة نوارة</h2>
     <p class="sec-body" data-i18n="video_subtitle">اكتشف كيف تعمل نوارة على توصيل أجود المنتجات الغذائية إلى أسواق العالم بأعلى معايير الجودة والاحترافية.</p>
     <div class="vid-frame" data-aos="zoom-in" data-aos-duration="800">
-      <img class="vid-thumb" src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt="فيديو نوارة"/>
+      <img class="vid-thumb lazy-img" src="img primary/807656326_122281742756169124_4541890765610698542_n.jpg" alt="فيديو نوارة" loading="lazy" decoding="async"/>
       <div class="vid-shade"></div>
       <button class="vid-play" onclick="openVid()" aria-label="تشغيل الفيديو"><i class="fas fa-play"></i></button>
       <div class="vid-label"><i class="fas fa-play-circle" style="margin-left:6px"></i> <span data-i18n="video_label">شاهد الفيديو التعريفي</span></div>
@@ -1626,7 +1622,7 @@ html[dir="ltr"] .mob-menu li a:hover {
   <div class="container">
     <div class="ft-grid">
       <div class="ft-brand">
-        <img src="img primary/logo.jpg" alt="نوارة"/>
+        <img src="img primary/logo.jpg" alt="نوارة" loading="lazy" decoding="async"/>
         <p data-i18n="ft_desc">شركة نوارة للاستيراد والتصدير وتجارة السلع الغذائية، الخضر، الفواكه، والأغذية المعلبة — رائدة في قطاعها بالجودة والالتزام والخبرة الوافية عبر مصر والإمارات وأسواق العالم.</p>
         <div class="ft-social">
           <a href="https://www.facebook.com/NawaraEGP?locale=ar_AR" target="_blank" rel="noopener" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
@@ -1921,7 +1917,7 @@ const i18n = {
     why_subtitle: "We deliver more than just agricultural goods — we provide dependable trust backed by over 10 years of seasoned experience.",
     why_check1: "Certified with global ISO accreditations",
     why_check2: "Over 10+ years of proven industry mastery",
-    why_check3: "Export network covering 30+ countries",
+    why_check3: "Export network covering 50+ countries",
     why_check4: "Dedicated team with agile response times",
     why_check5: "Competitive prices & customized client solutions",
     why_check6: "Full adherence to global food safety benchmarks",
@@ -1932,7 +1928,7 @@ const i18n = {
     why_card3_title: "Prompt Delivery",
     why_card3_desc: "Advanced infrastructure guaranteeing seamless fulfillment on time.",
     why_card4_title: "Trusted Partnership",
-    why_card4_desc: "Longstanding alliances with partners in 30+ countries worldwide.",
+    why_card4_desc: "Longstanding alliances with partners in 50+ countries worldwide.",
 
     cert1_name: "ISO 9001",
     cert1_desc: "Quality Management",
@@ -2044,9 +2040,63 @@ function toggleLang() {
 /* ------- AOS ------- */
 AOS.init({once:true,offset:70,duration:800,easing:'ease-out-cubic'});
 
-/* ------- Preloader ------- */
+/* ------- Lazy image helpers ------- */
+function hydrateLazyImg(img){
+  if(!img || img.dataset.hydrated === '1') return;
+  const src = img.dataset.src;
+  if(src){
+    img.dataset.hydrated = '1';
+    img.classList.add('is-loading');
+    const done = ()=>{
+      img.classList.remove('is-loading');
+      img.classList.add('is-loaded');
+    };
+    img.addEventListener('load', done, {once:true});
+    img.addEventListener('error', done, {once:true});
+    img.src = src;
+    img.removeAttribute('data-src');
+    if(img.complete) done();
+  } else if(img.getAttribute('src')){
+    img.dataset.hydrated = '1';
+    const mark = ()=> img.classList.add('is-loaded');
+    if(img.complete) mark();
+    else img.addEventListener('load', mark, {once:true});
+  }
+}
+
+const lazyImgObs = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    hydrateLazyImg(entry.target);
+    lazyImgObs.unobserve(entry.target);
+  });
+},{rootMargin:'280px 0px', threshold:0.01});
+
+const galItemObs = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    const img = entry.target.querySelector('img.lazy-img, img[data-src]');
+    if(img) hydrateLazyImg(img);
+    galItemObs.unobserve(entry.target);
+  });
+},{rootMargin:'180px 0px', threshold:0.08});
+
+/* Mark below-fold static images as loaded when ready */
+document.querySelectorAll('img.lazy-img[src]').forEach(img=>{
+  lazyImgObs.observe(img);
+});
+
+/* ------- Preloader (don't wait for all gallery images) ------- */
+function hidePreloader(){
+  const el = document.getElementById('preloader');
+  if(el && !el.classList.contains('out')) el.classList.add('out');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(hidePreloader, 1200);
+});
 window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('preloader').classList.add('out'),1800);
+  setTimeout(hidePreloader, 400);
 });
 
 /* ------- Navbar ------- */
@@ -2071,12 +2121,19 @@ mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 const slides=document.querySelectorAll('.h-slide');
 const dots=document.querySelectorAll('.h-dot');
 let cur=0,timer;
+function preloadHeroSlide(i){
+  const img = slides[i]?.querySelector('img');
+  if(img) hydrateLazyImg(img);
+}
 function goSlide(n){
   slides[cur].classList.remove('on');dots[cur].classList.remove('on');
   cur=n;
   slides[cur].classList.add('on');dots[cur].classList.add('on');
+  preloadHeroSlide(cur);
+  preloadHeroSlide((cur+1)%slides.length);
   clearInterval(timer);timer=setInterval(()=>goSlide((cur+1)%slides.length),6000);
 }
+preloadHeroSlide(1);
 timer=setInterval(()=>goSlide((cur+1)%slides.length),6000);
 
 /* ------- Canvas Particles ------- */
@@ -2114,7 +2171,7 @@ const tickItems=[
   {icon:'fa-seedling',ar:'خضر وفواكه طازجة',en:'Fresh Fruits & Vegetables'},
   {icon:'fa-ship',ar:'شحن دولي موثوق',en:'Reliable International Shipping'},
   {icon:'fa-medal',ar:'جودة معتمدة ISO',en:'ISO Certified Quality'},
-  {icon:'fa-globe-americas',ar:'30+ دولة',en:'30+ Export Destinations'},
+  {icon:'fa-globe-americas',ar:'50+ دولة',en:'50+ Export Destinations'},
   {icon:'fa-snowflake',ar:'تخزين مبرد حديث',en:'Modern Cold Storage'},
   {icon:'fa-handshake',ar:'شراكات استراتيجية',en:'Strategic Partnerships'},
   {icon:'fa-certificate',ar:'معايير عالمية',en:'Global Standards'},
@@ -2247,7 +2304,7 @@ filterCats.forEach(f => {
 });
 document.getElementById('galGrid').before(filterBar);
 
-/* --- build cards --- */
+/* --- build cards (images load only when near viewport) --- */
 const grid = document.getElementById('galGrid');
 galleryData.forEach((item, i) => {
   const div = document.createElement('div');
@@ -2256,7 +2313,8 @@ galleryData.forEach((item, i) => {
   div.dataset.index = i;
   const initialLabel = (currentLang === 'en') ? item.labelEn : item.labelAr;
   div.innerHTML = `
-    <img src="${item.src}" alt="${initialLabel}"
+    <img data-src="${item.src}" alt="${initialLabel}"
+         class="lazy-img" loading="lazy" decoding="async"
          onerror="this.closest('.g-item').style.display='none'"/>
     <div class="g-cap">
       <div class="g-cap-icon"><i class="fas fa-expand"></i></div>
@@ -2264,6 +2322,7 @@ galleryData.forEach((item, i) => {
     </div>`;
   div.addEventListener('click', () => openLB(i));
   grid.appendChild(div);
+  galItemObs.observe(div);
 });
 
 function updateGalleryLanguage(lang) {
@@ -2296,12 +2355,23 @@ function filterGallery(cat) {
   document.querySelectorAll('.g-item').forEach(el => {
     if (cat === 'all' || el.dataset.cat === cat) {
       el.style.display = '';
-      el.style.animation = 'none';
-      void el.offsetWidth; // trigger reflow
-      el.style.animation = `galFadeIn 0.35s ease ${Math.min(count * 0.025, 0.25)}s both`;
+      el.classList.remove('is-visible');
+      void el.offsetWidth;
+      el.style.animation = `galFadeIn 0.4s ease ${Math.min(count * 0.03, 0.3)}s both`;
+      el.classList.add('is-visible');
+      const img = el.querySelector('img');
+      if (img) {
+        // Load images for visible filtered cards near the top first
+        if (count < 8) hydrateLazyImg(img);
+        else {
+          lazyImgObs.observe(img);
+          galItemObs.observe(el);
+        }
+      }
       count++;
     } else {
       el.style.display = 'none';
+      el.style.animation = 'none';
     }
   });
 }
@@ -2309,7 +2379,18 @@ function filterGallery(cat) {
 /* --- lightbox uses galleryData --- */
 const imgs = galleryData.map(d => d.src);
 let lbIdx = 0;
-function openLB(i){ lbIdx=i; document.getElementById('lb-img').src=imgs[i]; document.getElementById('lb').classList.add('on'); document.body.style.overflow='hidden'; }
+function openLB(i){
+  lbIdx=i;
+  document.getElementById('lb-img').src=imgs[i];
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow='hidden';
+  // Prefetch neighbors for snappy lightbox navigation
+  [i-1, i+1].forEach(n=>{
+    const idx = (n + imgs.length) % imgs.length;
+    const pre = new Image();
+    pre.src = imgs[idx];
+  });
+}
 function closeLB(){ document.getElementById('lb').classList.remove('on'); document.body.style.overflow=''; }
 function lbNav(d){ lbIdx=(lbIdx+d+imgs.length)%imgs.length; document.getElementById('lb-img').src=imgs[lbIdx]; }
 document.getElementById('lb').addEventListener('click',function(e){ if(e.target===this) closeLB(); });
